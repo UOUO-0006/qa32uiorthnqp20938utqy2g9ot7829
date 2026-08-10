@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 検索エンジンに引っかからないようにする設定（noindex） -->
+  <!-- ARG対策1: 検索エンジン非掲載 (noindex) -->
   <meta name="robots" content="noindex, nofollow">
   <title>Rotated Image Page</title>
   <style>
@@ -26,16 +26,11 @@
       max-height: 70vh;
       margin-bottom: 20px;
       display: block;
-      /* CSSで画像をグルグル連続回転させる設定 */
       animation: spin 4s linear infinite;
     }
     @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
     a {
       color: #ffffff;
@@ -50,7 +45,6 @@
 </head>
 <body>
   <img src="image.png" alt="回転する添付画像" class="rotate-img">
-  <!-- 最初のページに戻るリンク -->
   <a href="index.html">■</a>
 </body>
 </html>

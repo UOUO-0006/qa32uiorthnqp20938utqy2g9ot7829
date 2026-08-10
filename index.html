@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 検索エンジンに引っかからないようにする設定（noindex） -->
+  <!-- ARG対策1: 検索エンジン非掲載 (noindex) -->
   <meta name="robots" content="noindex, nofollow">
   <title>Simple Page</title>
   <style>
@@ -32,6 +32,7 @@
       font-size: 2rem;
       text-decoration: none;
       line-height: 1;
+      cursor: pointer;
     }
     a:hover {
       color: #cccccc;
@@ -40,7 +41,17 @@
 </head>
 <body>
   <img src="image.png" alt="添付画像">
-  <!-- 新しいページ (page2.html) へのリンク -->
-  <a href="page2.html">■</a>
+  
+  <!-- ARG対策2 & 3: ソースコード直接閲覧でのネタバレ防止（難読化リンク） -->
+  <a id="secret-link">■</a>
+
+  <script>
+    // 更新ごとに変更するランダムURL（"x9k_37q_rotate_a82.html" をBase64難読化）
+    const encodedPath = "eDlrXzM3cV9yb3RhdGVfYTgyLmh0bWw=";
+    
+    document.getElementById("secret-link").addEventListener("click", function() {
+      window.location.href = atob(encodedPath);
+    });
+  </script>
 </body>
 </html>
