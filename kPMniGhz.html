@@ -32,26 +32,11 @@
       max-height: 45vh;
       margin-top: 20px;
       display: block;
-      animation: s 8s steps(4) infinite;
+      animation: s 3.2s steps(8) infinite;
     }
     @keyframes s {
-      0%   { transform: rotate(0deg); }
-      5%   { transform: rotate(0deg); }
-      12.5%{ transform: rotate(45deg); }
-      17.5%{ transform: rotate(45deg); }
-      25%  { transform: rotate(90deg); }
-      30%  { transform: rotate(90deg); }
-      37.5%{ transform: rotate(135deg); }
-      42.5%{ transform: rotate(135deg); }
-      50%  { transform: rotate(180deg); }
-      55%  { transform: rotate(180deg); }
-      62.5%{ transform: rotate(225deg); }
-      67.5%{ transform: rotate(225deg); }
-      75%  { transform: rotate(270deg); }
-      80%  { transform: rotate(270deg); }
-      87.5%{ transform: rotate(315deg); }
-      92.5%{ transform: rotate(315deg); }
-      100% { transform: rotate(360deg); }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
     .c {
       position: absolute;
