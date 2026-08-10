@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 検索エンジンに引っかからないようにする設定（noindex） -->
   <meta name="robots" content="noindex, nofollow">
-  <title>Simple Page</title>
+  <title>Rotated Image Page</title>
   <style>
     body {
       background-color: #000000;
@@ -20,12 +20,22 @@
       box-sizing: border-box;
       font-family: sans-serif;
     }
-    img {
+    .rotate-img {
       max-width: 100%;
       height: auto;
       max-height: 70vh;
       margin-bottom: 20px;
       display: block;
+      /* CSSで画像をグルグル連続回転させる設定 */
+      animation: spin 4s linear infinite;
+    }
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
     }
     a {
       color: #ffffff;
@@ -39,8 +49,8 @@
   </style>
 </head>
 <body>
-  <img src="image.png" alt="添付画像">
-  <!-- 新しいページ (page2.html) へのリンク -->
-  <a href="page2.html">■</a>
+  <img src="image.png" alt="回転する添付画像" class="rotate-img">
+  <!-- 最初のページに戻るリンク -->
+  <a href="index.html">■</a>
 </body>
 </html>
