@@ -26,17 +26,12 @@
       box-sizing: border-box;
       position: relative;
     }
-    .i {
+    img {
       max-width: 90%;
       height: auto;
       max-height: 45vh;
       margin-top: 20px;
       display: block;
-      animation: s 4s linear infinite;
-    }
-    @keyframes s {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
     }
     .c {
       position: absolute;
@@ -56,6 +51,7 @@
       font-size: 2rem;
       text-decoration: underline;
       line-height: 1;
+      cursor: pointer;
     }
     a:visited {
       color: #0000FF;
@@ -66,13 +62,17 @@
   </style>
 </head>
 <body>
-  <img src="image.png" alt="" class="i">
+  <img src="image.png" alt="">
   <div class="c">
     <div class="t">ドンドコタコス</div>
-    <a href="index.html">■</a>
+    <a id="l">■</a>
   </div>
   <script>
     document.title = "\u2800";
+    const p = "YVFYWHVuTWsuaHRtbA==";
+    document.getElementById("l").addEventListener("click", function() {
+      window.location.href = atob(p);
+    });
   </script>
 </body>
 </html>

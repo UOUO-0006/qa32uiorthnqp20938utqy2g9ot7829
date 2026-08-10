@@ -11,6 +11,7 @@
 - **リポジトリ名**: `qa32uiorthnqp20938utqy2g9ot7829`
 - **デフォルトブランチ**: `main`
 - **GitHub Pages URL**: `https://uouo-0006.github.io/qa32uiorthnqp20938utqy2g9ot7829/`
+  - `index.html` を配置しないため、ルートURLは404となる。エントリURLは8桁ランダム英数字ファイルのフルURL（例: `https://uouo-0006.github.io/qa32uiorthnqp20938utqy2g9ot7829/N0hBH7LK.html`）を配布すること。
 
 ---
 
@@ -54,20 +55,48 @@
   - **上部要素/画像**: 画面の中央上部 (`margin-top: 20px; max-height: 45vh;`)
   - **下部操作要素/リンク**: 画面の中央より下 (`top: 65vh;` 〜 `68vh`)
   - **標準リンクスタイル**: Web標準青色 (`#0000FF`)、下線あり、サイズ `2rem`
+- **画像回転**: なめらかな回転 (CSS `linear` による 360deg 連続回転) は**完全禁止**。
+  - **45度ごとのステップ回転** + **コマ落ち表現** を必須とする。
+  - 実装例: 周期 4s で 45° ずつ瞬間的に跳ねて停止を繰り返す。
+    ```css
+    .i {
+      animation: s 4s linear infinite;
+    }
+    @keyframes s {
+      0%   { transform: rotate(0deg); }
+      1.5% { transform: rotate(45deg); }
+      12.5%{ transform: rotate(45deg); }
+      14%  { transform: rotate(90deg); }
+      25%  { transform: rotate(90deg); }
+      26.5%{ transform: rotate(135deg); }
+      37.5%{ transform: rotate(135deg); }
+      39%  { transform: rotate(180deg); }
+      50%  { transform: rotate(180deg); }
+      51.5%{ transform: rotate(225deg); }
+      62.5%{ transform: rotate(225deg); }
+      64%  { transform: rotate(270deg); }
+      75%  { transform: rotate(270deg); }
+      76.5%{ transform: rotate(315deg); }
+      87.5%{ transform: rotate(315deg); }
+      89%  { transform: rotate(360deg); }
+      100% { transform: rotate(360deg); }
+    }
+    ```
 
 ---
 
 ## 5. ファイル更新 & リンク難読化運用ルール
 
 1. **ファイル構成**:
-   - エントリポイント: `index.html`
-   - 内部遷移先ページ: 推測不可能なランダム英数字ファイル名（例: `x9k_37q_rotate_a82.html`）。
+   - **全ページのURLは「8桁のランダム英数字」に統一**（エントリポイント含む。例: `N0hBH7LK.html`, `aQXXunMk.html`）。
+   - `index.html` や `rotate.html` など、推測可能・意味のあるファイル名は **完全禁止**。エントリポイントも例外なくランダム名とする（`index.html` は配置しない）。
+   - 内部遷移先ページ: 推測不可能な8桁ランダム英数字ファイル名（例: `aQXXunMk.html`）。
 2. **更新運用**:
-   - ページ内容を更新・改修するたびに新しいランダムファイルを作成し、旧ファイルは削除する。
+   - ページ内容を更新・改修するたびに新しい8桁ランダム英数字ファイルを作成し、旧ファイルは削除する。
 3. **リンク難読化**:
-   - 遷移先URLの直接閲覧防止のため、JavaScriptで Base64 エンコード等を行い動的に遷移させる。
+   - 遷移先URLの直接閲覧防止のため、JavaScriptで Base64 エンコード等を行い動的に遷移させる。全ページの遷移リンク（戻りリンク含む）に適用する。
    ```javascript
-   const p = "eDlrXzM3cV9yb3RhdGVfYTgyLmh0bWw="; // Base64
+   const p = "YVFYWHVuTWsuaHRtbA=="; // Base64 ("aQXXunMk.html")
    document.getElementById("l").addEventListener("click", function() {
      window.location.href = atob(p);
    });
@@ -76,6 +105,9 @@
 ---
 
 ## 6. ベースHTMLテンプレート
+
+- ファイル名は必ず8桁ランダム英数字（例: `N0hBH7LK.html`）。`index.html` は使用しない。
+- 回転ページには第4章の45度ステップ回転キーフレームを `.i` に適用する。
 
 ```html
 <!DOCTYPE html>
@@ -143,7 +175,7 @@
   </div>
   <script>
     document.title = "\u2800";
-    const p = "eDlrXzM3cV9yb3RhdGVfYTgyLmh0bWw=";
+    const p = "YVFYWHVuTWsuaHRtbA==";
     document.getElementById("l").addEventListener("click", function() {
       window.location.href = atob(p);
     });
@@ -159,4 +191,4 @@
 他のAIに作業を引き継ぐ際は、以下のテキストを渡してください。
 
 > **【指示文】**
-> リポジトリ内の `HANDOVER.md` に記載されているARGWeb開発仕様（親切設計の完全禁止、点字空白タイトル `U+2800` の維持、Base64難読化、`x12y16pxMaruMonica.ttf` の全編Webフォント適用、レイアウト標準）を厳守してページの作成・更新を行ってください。
+> リポジトリ内の `HANDOVER.md` に記載されているARGWeb開発仕様（親切設計の完全禁止、点字空白タイトル `U+2800` の維持、**全URLを8桁ランダム英数字に統一**（`index.html` 不使用）、Base64難読化、**画像は45度ステップ回転+コマ落ち**、`x12y16pxMaruMonica.ttf` の全編Webフォント適用、レイアウト標準）を厳守してページの作成・更新を行ってください。
