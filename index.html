@@ -6,6 +6,9 @@
   <meta name="robots" content="noindex, nofollow">
   <title>&#10240;</title>
   <style>
+    * {
+      font-family: 'マルモニカ', 'Marumonika', monospace, sans-serif;
+    }
     body {
       background-color: #000000;
       color: #ffffff;
@@ -17,7 +20,6 @@
       justify-content: flex-start;
       min-height: 100vh;
       box-sizing: border-box;
-      font-family: sans-serif;
       position: relative;
     }
     img {
@@ -27,9 +29,20 @@
       margin-top: 20px;
       display: block;
     }
-    a {
+    .c {
       position: absolute;
-      top: 68vh;
+      top: 65vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .t {
+      color: #ffffff;
+      font-size: 2rem;
+      line-height: 1;
+    }
+    a {
       color: #0000FF;
       font-size: 2rem;
       text-decoration: underline;
@@ -46,7 +59,10 @@
 </head>
 <body>
   <img src="image.png" alt="">
-  <a id="l">■</a>
+  <div class="c">
+    <div class="t">ドンドコタコス</div>
+    <a id="l">■</a>
+  </div>
   <script>
     document.title = "\u2800";
     const p = "eDlrXzM3cV9yb3RhdGVfYTgyLmh0bWw=";
