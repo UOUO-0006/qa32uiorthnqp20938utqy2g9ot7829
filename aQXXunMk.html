@@ -26,12 +26,32 @@
       box-sizing: border-box;
       position: relative;
     }
-    img {
+    .i {
       max-width: 90%;
       height: auto;
       max-height: 45vh;
       margin-top: 20px;
       display: block;
+      animation: s 4s linear infinite;
+    }
+    @keyframes s {
+      0%   { transform: rotate(0deg); }
+      1.5% { transform: rotate(45deg); }
+      12.5%{ transform: rotate(45deg); }
+      14%  { transform: rotate(90deg); }
+      25%  { transform: rotate(90deg); }
+      26.5%{ transform: rotate(135deg); }
+      37.5%{ transform: rotate(135deg); }
+      39%  { transform: rotate(180deg); }
+      50%  { transform: rotate(180deg); }
+      51.5%{ transform: rotate(225deg); }
+      62.5%{ transform: rotate(225deg); }
+      64%  { transform: rotate(270deg); }
+      75%  { transform: rotate(270deg); }
+      76.5%{ transform: rotate(315deg); }
+      87.5%{ transform: rotate(315deg); }
+      89%  { transform: rotate(360deg); }
+      100% { transform: rotate(360deg); }
     }
     .c {
       position: absolute;
@@ -62,14 +82,14 @@
   </style>
 </head>
 <body>
-  <img src="image.png" alt="">
+  <img src="image.png" alt="" class="i">
   <div class="c">
     <div class="t">ドンドコタコス</div>
     <a id="l">■</a>
   </div>
   <script>
     document.title = "\u2800";
-    const p = "eDlrXzM3cV9yb3RhdGVfYTgyLmh0bWw=";
+    const p = "TjBoQkg3TEsuaHRtbA==";
     document.getElementById("l").addEventListener("click", function() {
       window.location.href = atob(p);
     });
