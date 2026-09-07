@@ -26,20 +26,13 @@ min-height:100vh;
 box-sizing: border-box;
 position: relative;
 }
-img {
-max-width:90%;
-height: auto;
-max-height:45vh;
-margin-top:20px;
-display: block;
-}
 .c {
 position: absolute;
 top:65vh;
 display: flex;
-flex-direction: column;
+flex-direction: row;
 align-items: center;
-gap:10px;
+gap:30px;
 }
 a {
 color:rgb(50, 117, 198);
@@ -54,18 +47,56 @@ color:rgb(50, 117, 198);
 a:hover {
 opacity:0.8;
 }
+.s {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap:10px;
+}
+.n {
+font-size:2rem;
+cursor: pointer;
+color:#ffffff;
+}
+.i {
+max-width:120px;
+max-height:120px;
+}
 </style>
 </head>
 <body>
-<img src="image/index.png" alt="">
 <div class="c">
+<audio id="a" src="midi/maybe.mid" preload="auto" controls></audio>
+<div class="s">
+<span class="n" id="p">◀</span>
+<img class="i" id="g" src="image/maybe.png" alt="">
+<span class="n" id="x">▶</span>
+</div>
 <a id="l">■</a>
 </div>
 <script>
 document.title="\u2800";
-const p="bWFpbi5odG1s";
+var c=["beam","ddbbs","maybe","me","mirror","ninV","osetuma","saiki","toi"];
+var d=2;
+var g=document.getElementById("g");
+var a=document.getElementById("a");
+a.volume=0.5;
+document.getElementById("p").addEventListener("click",function(){
+d=(d-1+c.length)%c.length;
+g.src="image/"+c[d]+".png";
+});
+document.getElementById("x").addEventListener("click",function(){
+d=(d+1)%c.length;
+g.src="image/"+c[d]+".png";
+});
+var p1="T0suaHRtbA==";
+var p2="YnViYnUtLmh0bWw=";
 document.getElementById("l").addEventListener("click",function(){
-window.location.href=atob(p);
+if(c[d]==="maybe"){
+window.location.href=atob(p1);
+}else{
+window.location.href=atob(p2);
+}
 });
 </script>
 </body>
