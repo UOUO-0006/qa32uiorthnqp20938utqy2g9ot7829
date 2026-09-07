@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>&#10240;</title>
+<style>
+@font-face {
+font-family:'MaruMonica';
+src:url('../x12y16pxMaruMonica.ttf') format('truetype');
+}
+* {
+font-family:'MaruMonica', sans-serif;
+box-sizing: border-box;
+}
+body {
+background-color:#000000;
+color:#ffffff;
+margin:0;
+padding:20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+min-height:100vh;
+}
+.d {
+max-width:90%;
+max-height:35vh;
+margin-top:20px;
+display: block;
+}
+#v {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:12px;
+margin-top:30px;
+}
+.r {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap:16px;
+}
+.q {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap:6px;
+background: #1a1a1a;
+border: 1px solid #333;
+border-radius: 4px;
+padding: 6px 10px;
+height: 40px;
+}
+.q audio {
+display: none;
+}
+.b {
+width: 28px;
+height: 28px;
+border-radius: 50%;
+background: #333;
+border: 1px solid #555;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-shrink: 0;
+transition: background 0.15s;
+}
+.b:hover {
+background: #444;
+border-color: rgb(50, 117, 198);
+}
+.b svg {
+width: 12px;
+height: 12px;
+fill: #ccc;
+}
+.b:hover svg {
+fill: rgb(50, 117, 198);
+}
+.b .h {
+display: none;
+}
+.b.v .e {
+display: none;
+}
+.b.v .h {
+display: block;
+}
+.w {
+width: 18px;
+height: 18px;
+flex-shrink: 0;
+opacity: 0.6;
+}
+.w svg {
+width: 100%;
+height: 100%;
+fill: #ccc;
+}
+.f {
+-webkit-appearance: none;
+appearance: none;
+width: 60px;
+height: 4px;
+background: #444;
+border-radius: 2px;
+outline: none;
+cursor: pointer;
+}
+.f::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: #ccc;
+cursor: pointer;
+border: none;
+}
+.f::-moz-range-thumb {
+width: 12px;
+height: 12px;
+border-radius: 50%;
+background: #ccc;
+cursor: pointer;
+border: none;
+}
+.f:hover::-webkit-slider-thumb {
+background: rgb(50, 117, 198);
+}
+.f:hover::-moz-range-thumb {
+background: rgb(50, 117, 198);
+}
+.z {
+display: flex;
+flex-direction: row;
+align-items: center;
+gap:10px;
+}
+.n {
+font-size:2rem;
+cursor: pointer;
+color:#ffffff;
+user-select: none;
+}
+.n:hover {
+opacity: 0.7;
+}
+.gi {
+max-width:80px;
+max-height:80px;
+}
+.jl {
+color:rgb(50, 117, 198);
+font-size:3rem;
+text-decoration: underline;
+line-height:1;
+cursor: pointer;
+}
+.jl:visited {
+color:rgb(50, 117, 198);
+}
+.jl:hover {
+opacity:0.8;
+}
+@media screen and (max-width: 600px) {
+.r {
+flex-direction: column;
+gap: 8px;
+}
+.f {
+width: 50px;
+}
+}
+</style>
+</head>
+<body>
+<img class="d" src="../image/door.png" alt="" id="door" style="cursor:pointer;">
+<div id="v"></div>
+<script>
+document.title="\u2800";
+document.getElementById("door").addEventListener("click",function(){
+localStorage.removeItem("q1");
+localStorage.removeItem("q2");
+window.location.href=atob("Li4vaW5kZXguaHRtbA==");
+});
+function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}}
+function hm(){for(var i=0;i<s.length;i++){if(s[i]===m[i])return true;}return false;}
+function ss(){localStorage.setItem("q1",JSON.stringify({s:s,m:m,o:o,d:d}));}
+var sv=localStorage.getItem("q1");
+var s,m,o,d;
+if(sv){
+var st=JSON.parse(sv);
+s=st.s;m=st.m;o=st.o;d=st.d;
+}else{
+s=["beam","ddbbs","maybe","me","mirror","ninV","osetuma","saiki","toi","TT","apV"];
+m=["beam","ddbbs","maybe","me","mirror","ninV","osetuma","saiki","toi","TT","apV"];
+sh(s);
+sh(m);
+while(hm()){sh(m);}
+o=["maybe","me","toi","TT","saiki","osetuma","beam","ddbbs","mirror","ninV","apV"];
+d=[];
+for(var i=0;i<s.length;i++){d.push(o.indexOf(m[i]));}
+ss();
+}
+var v=document.getElementById("v");
+var sp='<svg class="e" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>';
+var sv='<svg class="h" viewBox="0 0 24 24"><rect x="5" y="3" width="5" height="18"/><rect x="14" y="3" width="5" height="18"/></svg>';
+var vo='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+for(var i=0;i<s.length;i++){
+var r=document.createElement("div");
+r.className="r";
+r.setAttribute("data-s",s[i]);
+r.setAttribute("data-d",d[i]);
+r.setAttribute("data-i",i);
+r.innerHTML='<div class="q"><div class="b">'+sp+sv+'</div><div class="w">'+vo+'</div><input class="f" type="range" min="0" max="100" value="50"><audio preload="metadata" src="../midi/'+s[i]+'.mp3"></audio></div><div class="z"><span class="n jp">◀</span><img class="gi" src="../image/'+o[d[i]]+'.png" alt=""><span class="n jx">▶</span></div><a class="jl">■</a>';
+v.appendChild(r);
+}
+var aa=document.querySelectorAll(".r audio");
+aa.forEach(function(a){a.volume=0.5;});
+document.addEventListener("click",function(e){
+var r=e.target.closest(".r");
+if(!r)return;
+var ri=parseInt(r.getAttribute("data-i"));
+var sg=r.getAttribute("data-s");
+var di=parseInt(r.getAttribute("data-d"));
+var au=r.querySelector("audio");
+var bt=r.querySelector(".b");
+var im=r.querySelector(".gi");
+if(e.target.closest(".b")){
+if(au.paused){
+aa.forEach(function(o){if(o!==au){o.pause();o.closest(".r").querySelector(".b").classList.remove("v");}});
+au.play();
+bt.classList.add("v");
+}else{
+au.pause();
+bt.classList.remove("v");
+}
+}
+if(e.target.closest(".jp")){
+di=(di-1+o.length)%o.length;
+d[ri]=di;
+r.setAttribute("data-d",di);
+im.src="../image/"+o[di]+".png";
+ss();
+}
+if(e.target.closest(".jx")){
+di=(di+1)%o.length;
+d[ri]=di;
+r.setAttribute("data-d",di);
+im.src="../image/"+o[di]+".png";
+ss();
+}
+if(e.target.closest(".jl")){
+e.preventDefault();
+if(o[di]===sg){
+window.location.href="OK_"+sg+".html";
+}else{
+window.location.href=atob("YnViYnUtLmh0bWw=");
+}
+}
+});
+document.addEventListener("input",function(e){
+if(e.target.classList.contains("f")){
+var r=e.target.closest(".r");
+r.querySelector("audio").volume=e.target.value/100;
+}
+});
+aa.forEach(function(a){
+a.addEventListener("ended",function(){
+a.closest(".r").querySelector(".b").classList.remove("v");
+});
+});
+</script>
+</body>
+</html>

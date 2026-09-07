@@ -8,7 +8,7 @@
 <style>
 @font-face {
 font-family:'MaruMonica';
-src:url('x12y16pxMaruMonica.ttf') format('truetype');
+src:url('../x12y16pxMaruMonica.ttf') format('truetype');
 }
 * {
 font-family:'MaruMonica', sans-serif;
@@ -29,43 +29,47 @@ position: relative;
 img {
 max-width:90%;
 height: auto;
-max-height:30vh;
+max-height:45vh;
 margin-top:20px;
 display: block;
 }
+.t {
+font-size: 1.5rem;
+color: #ffffff;
+text-align: center;
+margin-top: 20px;
+line-height: 1.8;
+}
+.t p {
+margin: 0.3em 0;
+}
 .c {
 position: absolute;
-top:65vh;
+top:85vh;
 display: flex;
 flex-direction: column;
 align-items: center;
 gap:10px;
 }
-a {
-color:rgb(50, 117, 198);
-font-size:3rem;
-text-decoration: underline;
-line-height:1;
-cursor: pointer;
-}
-a:visited {
-color:rgb(50, 117, 198);
-}
-a:hover {
-opacity:0.8;
-}
 </style>
 </head>
 <body>
-<img src="image/index.png" alt="">
-<img src="image/door.png" alt="">
+<img src="../image/OK_2.png" alt="">
+<div class="t">
+<p>me</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+</div>
 <div class="c">
-<a id="l">■</a>
+<img src="../image/return.png" alt="" id="r" style="cursor:pointer;">
 </div>
 <script>
 document.title="\u2800";
-const p="aHRtbC9tYWluLmh0bWw=";
-document.getElementById("l").addEventListener("click",function(){
+var p="bWFpbjIuaHRtbA==";
+document.getElementById("r").addEventListener("click",function(){
 window.location.href=atob(p);
 });
 </script>

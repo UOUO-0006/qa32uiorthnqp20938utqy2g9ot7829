@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<title>&#10240;</title>
+
+<script>
+  const GIF_DIR    = "../image/";
+  const GIF_PHASES = 9;
+  const GIF_FILE = {
+    normal: "spin_150_p{n}.gif",
+    blue:   "spin_150_blue_p{n}.gif",
+    gray:   "spin_150_gray_p{n}.gif",
+    red:    "spin_150_red_p{n}.gif"
+  };
+  const GIF_RATE = {
+    blue: 1 / 50,
+    gray: 1 / 50,
+    red:  1 / 100
+  };
+</script>
+<style>
+  @font-face {
+    font-family: "Misaki";
+    src: url("https://cdn.jsdelivr.net/gh/george-angelov/misaki-font@main/misaki_gothic.ttf") format("truetype");
+    font-display: swap;
+  }
+  :root {
+    --C0: #000000;
+    --C1: #FFFFFF;
+    --C2: #FF0000;
+    --C3: #00FF00;
+    --C4: #0000FF;
+    --C5: #FFFF00;
+    --C6: #FF00FF;
+    --C7: #00FFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #008080;
+    font-family: "Misaki", "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 12px;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+    image-rendering: pixelated;
+    padding: 30px;
+  }
+  .raised {
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040;
+    border-bottom: 1px solid #404040;
+    box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+  }
+  .sunken {
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
+  }
+  .ie-window {
+    width: 780px;
+    margin: 0 auto;
+    background: #c0c0c0;
+    padding: 3px;
+  }
+  .title-bar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 3px;
+    gap: 4px;
+  }
+  .title-bar .title { flex: 1; font-weight: bold; font-size: 12px; overflow: hidden; white-space: nowrap; }
+  .title-bar .buttons { display: flex; gap: 2px; }
+  .title-bar .buttons button {
+    width: 16px; height: 14px;
+    background: #c0c0c0;
+    font-family: "Marlett", "MS Gothic", monospace;
+    font-size: 9px;
+    line-height: 1;
+    cursor: pointer;
+    border: none;
+  }
+  .menu-bar { display: flex; background: #c0c0c0; padding: 1px 0; border-bottom: 1px solid #808080; }
+  .menu-bar span { padding: 3px 8px; cursor: default; }
+  .menu-bar span:hover { background: #000080; color: #fff; }
+  .toolbar { display: flex; align-items: center; background: #c0c0c0; padding: 2px 4px; border-bottom: 1px solid #808080; gap: 1px; }
+  .tb-btn {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-width: 48px; height: 42px; background: transparent;
+    border: 1px solid transparent; cursor: pointer; font-family: inherit; font-size: 11px; gap: 1px;
+  }
+  .tb-btn:hover { border-top: 1px solid #ffffff; border-left: 1px solid #ffffff; border-right: 1px solid #808080; border-bottom: 1px solid #808080; }
+  .tb-btn:active { border-top: 1px solid #808080; border-left: 1px solid #808080; border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff; }
+  .tb-btn .icon { line-height: 0; }
+  .tb-btn.disabled { color: #808080; opacity: 0.5; }
+  .tb-btn.disabled svg { opacity: 0.4; }
+  .tb-sep { width: 1px; height: 38px; background: #808080; border-right: 1px solid #ffffff; margin: 0 3px; }
+  .address-bar { display: flex; align-items: center; background: #c0c0c0; padding: 2px 4px; gap: 6px; border-bottom: 1px solid #808080; }
+  .address-bar label { white-space: nowrap; }
+  .address-bar .address-field { flex: 1; display: flex; align-items: center; background: #ffffff; height: 22px; padding: 0 3px; gap: 4px; }
+  .address-field input { flex: 1; border: none; outline: none; font-family: inherit; font-size: 12px; -webkit-font-smoothing: none; }
+  .address-field .drop { width: 16px; height: 18px; background: #c0c0c0; font-size: 9px; cursor: pointer; border: none; }
+  .go-btn { display: flex; align-items: center; height: 22px; padding: 0 10px; background: transparent; border: 1px solid transparent; font-family: inherit; cursor: pointer; }
+  .go-btn:hover { border-top: 1px solid #fff; border-left: 1px solid #fff; border-right: 1px solid #808080; border-bottom: 1px solid #808080; }
+  .page {
+    background: var(--C0);
+    height: 440px;
+    overflow-y: scroll;
+    padding: 0;
+    position: relative;
+  }
+  .status-bar { display: flex; background: #c0c0c0; padding: 2px; gap: 2px; }
+  .status-bar .pane { padding: 2px 6px; height: 20px; display: flex; align-items: center; gap: 4px; }
+  .status-bar .main { flex: 1; }
+  .dd-banner {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--C0);
+    padding: 10px 10px 6px;
+    border-bottom: 1px solid var(--C1);
+  }
+  .dd-banner pre {
+    font-family: "MS Gothic", "ＭＳ ゴシック", "Misaki", monospace;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0;
+    white-space: pre;
+    margin: 0;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+    font-smooth: never;
+    text-rendering: optimizeSpeed;
+  }
+  .dd-banner pre span {
+    display: block;
+    animation: aaBlueStep 1.2s infinite steps(1);
+    animation-delay: calc(var(--i) * -0.2s);
+  }
+  @keyframes aaBlueStep {
+    0%, 100% { color: #00FF00; }
+    25%, 75% { color: #00FFFF; }
+    50% { color: #FFFFFF; }
+  }
+  .board {
+    padding: 4px 8px 16px;
+    background: #000000;
+    color: #FFFFFF;
+  }
+  .thread {
+    margin: 0;
+    padding: 5px 0 7px;
+    background: #000000;
+    border-bottom: 1px dashed #FFFFFF;
+  }
+  .thread-header {
+    display: flex;
+    align-items: baseline;
+    min-width: 0;
+    padding: 0 0 2px;
+    background: #000000;
+    color: #FFFFFF;
+    border: 0;
+    font-weight: normal;
+    line-height: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .thread-bullet {
+    flex: 0 0 auto;
+    margin-right: 6px;
+    color: #FFFFFF;
+  }
+  .thread-header a {
+    min-width: 0;
+    overflow: hidden;
+    color: #00FFFF;
+    text-decoration: underline;
+    text-overflow: clip;
+    white-space: nowrap;
+  }
+  .thread-header a:visited { color: #00FFFF; }
+  .thread-no { color: #FFFF00; font-weight: bold; }
+  .thread-subject { color: #00FFFF; font-weight: bold; }
+  .res-preview { padding: 0 0 0 18px; background: #000000; }
+  .res { margin: 0 0 5px; padding: 0; background: #000000; }
+  .res-head { margin: 0; color: #FFFFFF; line-height: 15px; }
+  .res-no { color: #FFFF00; font-weight: bold; }
+  .res-name { color: #00FF00; font-weight: bold; }
+  .res-date { color: #FFFFFF; }
+  .res-id { color: #FFFFFF; }
+  .res-body { padding: 1px 0 0 18px; color: #FFFFFF; line-height: 15px; }
+  .res-gif { display: inline-block; width: 150px; height: 150px; image-rendering: pixelated; image-rendering: crisp-edges; vertical-align: middle; }
+  .thread-footer {
+    padding: 1px 0 0 18px;
+    background: #000000;
+    color: #FFFFFF;
+    border: 0;
+    text-align: left;
+    line-height: 15px;
+  }
+  .thread-footer a, .page a { color: #00FFFF; text-decoration: underline; }
+  .thread-footer a:visited, .page a:visited { color: #00FFFF; }
+  .thread-footer a:hover, .page a:hover { background: #0000FF; color: #FFFFFF; text-decoration: none; }
+  #sentinel { height: 1px; background: transparent; }
+  .page::-webkit-scrollbar { width: 16px; height: 16px; }
+  .page::-webkit-scrollbar-track {
+    background: #c0c0c0;
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040;
+  }
+  .page::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040; border-bottom: 1px solid #404040;
+    box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+    min-height: 20px;
+  }
+  .page::-webkit-scrollbar-thumb:hover { background: #d0d0d0; }
+  .page::-webkit-scrollbar-thumb:active {
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040;
+  }
+  .page::-webkit-scrollbar-button {
+    background: #c0c0c0;
+    border-top: 1px solid #ffffff; border-left: 1px solid #ffffff;
+    border-right: 1px solid #404040; border-bottom: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
+    height: 16px; width: 16px; display: block;
+  }
+  .page::-webkit-scrollbar-button:hover { background: #d0d0d0; }
+  .page::-webkit-scrollbar-button:active {
+    border-top: 1px solid #808080; border-left: 1px solid #808080;
+    border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040;
+  }
+  .page::-webkit-scrollbar-button:vertical:decrement {
+    background: #c0c0c0 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="8,5 4,11 12,11" fill="%23000000"/></svg>') no-repeat center;
+  }
+  .page::-webkit-scrollbar-button:vertical:increment {
+    background: #c0c0c0 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><polygon points="8,11 4,5 12,5" fill="%23000000"/></svg>') no-repeat center;
+  }
+  .page::-webkit-scrollbar-corner { background: #c0c0c0; border-top: 1px solid #ffffff; border-left: 1px solid #ffffff; }
+  .tb-btn svg, .title-bar svg, .address-field svg, .status-bar svg {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+</style>
+</head>
+<body>
+<div class="ie-window raised">
+  <div class="title-bar">
+    <svg width="14" height="14" viewBox="0 0 14 14" shape-rendering="crispEdges">
+      <rect x="4" y="0" width="6" height="1" fill="#00FFFF"/>
+      <rect x="2" y="1" width="2" height="1" fill="#0080FF"/>
+      <rect x="4" y="1" width="6" height="1" fill="#00FFFF"/>
+      <rect x="10" y="1" width="2" height="1" fill="#0080FF"/>
+      <rect x="1" y="2" width="1" height="1" fill="#0080FF"/>
+      <rect x="2" y="2" width="10" height="1" fill="#00FFFF"/>
+      <rect x="12" y="2" width="1" height="1" fill="#0080FF"/>
+      <rect x="0" y="3" width="1" height="1" fill="#0080FF"/>
+      <rect x="1" y="3" width="12" height="1" fill="#00FFFF"/>
+      <rect x="13" y="3" width="1" height="1" fill="#0080FF"/>
+      <rect x="0" y="4" width="14" height="1" fill="#0080FF"/>
+      <rect x="1" y="4" width="12" height="1" fill="#00FFFF"/>
+      <rect x="0" y="5" width="1" height="1" fill="#0080FF"/>
+      <rect x="1" y="5" width="12" height="1" fill="#0080FF"/>
+      <rect x="13" y="5" width="1" height="1" fill="#0080FF"/>
+      <rect x="0" y="6" width="14" height="1" fill="#FFFFFF"/>
+      <rect x="0" y="7" width="1" height="1" fill="#0080FF"/>
+      <rect x="1" y="7" width="12" height="1" fill="#0080FF"/>
+      <rect x="13" y="7" width="1" height="1" fill="#0080FF"/>
+      <rect x="0" y="8" width="14" height="1" fill="#FFFFFF"/>
+      <rect x="0" y="9" width="1" height="1" fill="#0080FF"/>
+      <rect x="1" y="9" width="12" height="1" fill="#00FFFF"/>
+      <rect x="13" y="9" width="1" height="1" fill="#0080FF"/>
+      <rect x="0" y="10" width="1" height="1" fill="#0080FF"/>
+      <rect x="1" y="10" width="12" height="1" fill="#00FFFF"/>
+      <rect x="13" y="10" width="1" height="1" fill="#0080FF"/>
+      <rect x="1" y="11" width="1" height="1" fill="#0080FF"/>
+      <rect x="2" y="11" width="10" height="1" fill="#00FFFF"/>
+      <rect x="12" y="11" width="1" height="1" fill="#0080FF"/>
+      <rect x="2" y="12" width="2" height="1" fill="#0080FF"/>
+      <rect x="4" y="12" width="6" height="1" fill="#00FFFF"/>
+      <rect x="10" y="12" width="2" height="1" fill="#0080FF"/>
+      <rect x="4" y="13" width="6" height="1" fill="#0080FF"/>
+    </svg>
+    <span class="title">DD BBS - Internet Explorer</span>
+    <span class="buttons">
+      <button class="raised">_</button>
+      <button class="raised">□</button>
+      <button class="raised" id="close-btn">×</button>
+    </span>
+  </div>
+  <div class="menu-bar">
+    <span>File(<u>F</u>)</span>
+    <span>Edit(<u>E</u>)</span>
+    <span>View(<u>V</u>)</span>
+    <span>Favorites(<u>A</u>)</span>
+    <span>Tools(<u>T</u>)</span>
+    <span>Help(<u>H</u>)</span>
+  </div>
+  <div class="toolbar">
+    <button class="tb-btn" id="back-btn"><span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" shape-rendering="crispEdges">
+      <rect x="8" y="2" width="2" height="2" fill="#008000"/>
+      <rect x="6" y="4" width="2" height="2" fill="#008000"/>
+      <rect x="4" y="6" width="2" height="2" fill="#008000"/>
+      <rect x="2" y="8" width="2" height="2" fill="#008000"/>
+      <rect x="4" y="10" width="2" height="2" fill="#008000"/>
+      <rect x="6" y="12" width="2" height="2" fill="#008000"/>
+      <rect x="8" y="14" width="2" height="2" fill="#008000"/>
+      <rect x="4" y="8" width="14" height="2" fill="#00FF00"/>
+      <rect x="2" y="8" width="2" height="2" fill="#00FF00"/>
+    </svg></span>Back</button>
+    <button class="tb-btn disabled"><span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" shape-rendering="crispEdges">
+      <rect x="10" y="2" width="2" height="2" fill="#008000"/>
+      <rect x="12" y="4" width="2" height="2" fill="#008000"/>
+      <rect x="14" y="6" width="2" height="2" fill="#008000"/>
+      <rect x="16" y="8" width="2" height="2" fill="#008000"/>
+      <rect x="14" y="10" width="2" height="2" fill="#008000"/>
+      <rect x="12" y="12" width="2" height="2" fill="#008000"/>
+      <rect x="10" y="14" width="2" height="2" fill="#008000"/>
+      <rect x="2" y="8" width="14" height="2" fill="#00FF00"/>
+      <rect x="16" y="8" width="2" height="2" fill="#00FF00"/>
+    </svg></span>Forward</button>
+    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="3" y="3" width="2" height="2" fill="#FF0000"/>
+      <rect x="5" y="5" width="2" height="2" fill="#FF0000"/>
+      <rect x="7" y="7" width="2" height="2" fill="#FF0000"/>
+      <rect x="9" y="9" width="2" height="2" fill="#FF0000"/>
+      <rect x="11" y="11" width="2" height="2" fill="#FF0000"/>
+      <rect x="13" y="3" width="2" height="2" fill="#FF0000"/>
+      <rect x="11" y="5" width="2" height="2" fill="#FF0000"/>
+      <rect x="5" y="11" width="2" height="2" fill="#FF0000"/>
+      <rect x="3" y="13" width="2" height="2" fill="#FF0000"/>
+    </svg></span>Stop</button>
+    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="6" y="2" width="6" height="2" fill="#00AA00"/>
+      <rect x="4" y="4" width="2" height="2" fill="#00AA00"/>
+      <rect x="12" y="4" width="2" height="2" fill="#00AA00"/>
+      <rect x="2" y="6" width="2" height="2" fill="#00AA00"/>
+      <rect x="14" y="6" width="2" height="2" fill="#00AA00"/>
+      <rect x="2" y="8" width="2" height="2" fill="#00AA00"/>
+      <rect x="14" y="8" width="2" height="2" fill="#00AA00"/>
+      <rect x="4" y="10" width="2" height="2" fill="#00AA00"/>
+      <rect x="12" y="10" width="2" height="2" fill="#00AA00"/>
+      <rect x="14" y="10" width="2" height="2" fill="#00AA00"/>
+      <rect x="2" y="6" width="6" height="2" fill="#00FF00"/>
+      <rect x="10" y="10" width="6" height="2" fill="#00FF00"/>
+      <rect x="6" y="12" width="6" height="2" fill="#00AA00"/>
+    </svg></span>Refresh</button>
+    <button class="tb-btn" id="home-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="8" y="1" width="2" height="2" fill="#000080"/>
+      <rect x="6" y="3" width="2" height="2" fill="#000080"/>
+      <rect x="10" y="3" width="2" height="2" fill="#000080"/>
+      <rect x="4" y="5" width="2" height="2" fill="#000080"/>
+      <rect x="12" y="5" width="2" height="2" fill="#000080"/>
+      <rect x="2" y="7" width="2" height="2" fill="#000080"/>
+      <rect x="14" y="7" width="2" height="2" fill="#000080"/>
+      <rect x="4" y="9" width="10" height="2" fill="#0000FF"/>
+      <rect x="4" y="11" width="4" height="4" fill="#0000FF"/>
+      <rect x="10" y="11" width="4" height="4" fill="#0000FF"/>
+      <rect x="7" y="12" width="4" height="4" fill="#FFFF00"/>
+    </svg></span>Home</button>
+    <span class="tb-sep"></span>
+    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="5" y="2" width="4" height="2" fill="#000000"/>
+      <rect x="3" y="4" width="2" height="2" fill="#000000"/>
+      <rect x="9" y="4" width="2" height="2" fill="#000000"/>
+      <rect x="3" y="6" width="2" height="2" fill="#000000"/>
+      <rect x="9" y="6" width="2" height="2" fill="#000000"/>
+      <rect x="5" y="8" width="4" height="2" fill="#000000"/>
+      <rect x="5" y="4" width="4" height="4" fill="#00FFFF"/>
+      <rect x="9" y="8" width="2" height="2" fill="#000000"/>
+      <rect x="11" y="10" width="2" height="2" fill="#808000"/>
+      <rect x="13" y="12" width="2" height="2" fill="#808000"/>
+    </svg></span>Search</button>
+    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="8" y="1" width="2" height="2" fill="#FFD700"/>
+      <rect x="8" y="3" width="2" height="2" fill="#FFD700"/>
+      <rect x="2" y="5" width="14" height="2" fill="#FFD700"/>
+      <rect x="4" y="7" width="10" height="2" fill="#FFD700"/>
+      <rect x="4" y="9" width="4" height="2" fill="#FFD700"/>
+      <rect x="10" y="9" width="4" height="2" fill="#FFD700"/>
+      <rect x="2" y="11" width="4" height="2" fill="#FFD700"/>
+      <rect x="12" y="11" width="4" height="2" fill="#FFD700"/>
+      <rect x="2" y="13" width="2" height="2" fill="#FFD700"/>
+      <rect x="14" y="13" width="2" height="2" fill="#FFD700"/>
+    </svg></span>Favorites</button>
+    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="5" y="2" width="6" height="2" fill="#000080"/>
+      <rect x="3" y="4" width="2" height="2" fill="#000080"/>
+      <rect x="13" y="4" width="2" height="2" fill="#000080"/>
+      <rect x="2" y="6" width="1" height="4" fill="#000080"/>
+      <rect x="15" y="6" width="1" height="4" fill="#000080"/>
+      <rect x="3" y="10" width="2" height="2" fill="#000080"/>
+      <rect x="13" y="10" width="2" height="2" fill="#000080"/>
+      <rect x="5" y="12" width="6" height="2" fill="#000080"/>
+      <rect x="3" y="4" width="12" height="8" fill="#FFFFFF"/>
+      <rect x="5" y="2" width="6" height="1" fill="#000080"/>
+      <rect x="3" y="3" width="2" height="1" fill="#000080"/>
+      <rect x="13" y="3" width="2" height="1" fill="#000080"/>
+      <rect x="2" y="5" width="1" height="6" fill="#000080"/>
+      <rect x="15" y="5" width="1" height="6" fill="#000080"/>
+      <rect x="3" y="11" width="2" height="1" fill="#000080"/>
+      <rect x="13" y="11" width="2" height="1" fill="#000080"/>
+      <rect x="5" y="12" width="8" height="1" fill="#000080"/>
+      <rect x="3" y="4" width="12" height="7" fill="#FFFFFF"/>
+      <rect x="8" y="4" width="2" height="4" fill="#000000"/>
+      <rect x="8" y="8" width="4" height="2" fill="#000000"/>
+    </svg></span>History</button>
+    <span class="tb-sep"></span>
+    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="1" y="4" width="16" height="10" fill="#FFFFFF"/>
+      <rect x="1" y="4" width="16" height="1" fill="#000000"/>
+      <rect x="1" y="4" width="1" height="10" fill="#000000"/>
+      <rect x="16" y="4" width="1" height="10" fill="#000000"/>
+      <rect x="1" y="13" width="16" height="1" fill="#000000"/>
+      <rect x="2" y="5" width="2" height="2" fill="#808080"/>
+      <rect x="14" y="5" width="2" height="2" fill="#808080"/>
+      <rect x="4" y="7" width="2" height="2" fill="#808080"/>
+      <rect x="12" y="7" width="2" height="2" fill="#808080"/>
+      <rect x="6" y="9" width="2" height="2" fill="#808080"/>
+      <rect x="10" y="9" width="2" height="2" fill="#808080"/>
+      <rect x="8" y="9" width="2" height="2" fill="#808080"/>
+    </svg></span>Mail</button>
+    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
+      <rect x="4" y="1" width="10" height="4" fill="#FFFFFF"/>
+      <rect x="4" y="1" width="10" height="1" fill="#000000"/>
+      <rect x="4" y="1" width="1" height="4" fill="#000000"/>
+      <rect x="13" y="1" width="1" height="4" fill="#000000"/>
+      <rect x="1" y="5" width="16" height="7" fill="#C0C0C0"/>
+      <rect x="1" y="5" width="16" height="1" fill="#000000"/>
+      <rect x="1" y="5" width="1" height="7" fill="#000000"/>
+      <rect x="16" y="5" width="1" height="7" fill="#000000"/>
+      <rect x="1" y="11" width="16" height="1" fill="#000000"/>
+      <rect x="13" y="7" width="2" height="2" fill="#00AA00"/>
+      <rect x="4" y="12" width="10" height="4" fill="#FFFFFF"/>
+      <rect x="4" y="12" width="1" height="4" fill="#000000"/>
+      <rect x="13" y="12" width="1" height="4" fill="#000000"/>
+      <rect x="4" y="15" width="10" height="1" fill="#000000"/>
+      <rect x="6" y="13" width="6" height="1" fill="#808080"/>
+    </svg></span>Print</button>
+  </div>
+  <div class="address-bar">
+    <label>Address(<u>D</u>)</label>
+    <div class="address-field sunken">
+      <svg width="12" height="14" viewBox="0 0 12 14" shape-rendering="crispEdges">
+        <rect x="0" y="0" width="8" height="14" fill="#FFFFFF"/>
+        <rect x="0" y="0" width="8" height="1" fill="#000000"/>
+        <rect x="0" y="0" width="1" height="14" fill="#000000"/>
+        <rect x="0" y="13" width="12" height="1" fill="#000000"/>
+        <rect x="11" y="3" width="1" height="11" fill="#000000"/>
+        <rect x="8" y="0" width="1" height="1" fill="#000000"/>
+        <rect x="9" y="1" width="1" height="1" fill="#000000"/>
+        <rect x="10" y="2" width="1" height="1" fill="#000000"/>
+        <rect x="8" y="1" width="1" height="3" fill="#C0C0C0"/>
+        <rect x="9" y="2" width="1" height="2" fill="#C0C0C0"/>
+        <rect x="10" y="3" width="1" height="1" fill="#C0C0C0"/>
+        <rect x="1" y="3" width="7" height="1" fill="#0000FF"/>
+        <rect x="2" y="5" width="6" height="1" fill="#808080"/>
+        <rect x="2" y="7" width="8" height="1" fill="#808080"/>
+        <rect x="2" y="9" width="8" height="1" fill="#808080"/>
+        <rect x="2" y="11" width="5" height="1" fill="#808080"/>
+      </svg>
+      <input type="text" id="address-input" readonly value="http://www.ddbbs.net">
+      <button class="drop raised">▼</button>
+    </div>
+    <button class="go-btn">Go</button>
+  </div>
+  <div class="page sunken" id="page">
+    <div class="dd-banner">
+<pre aria-label="DD BBS"><span style="--i:0">██████╗ ██████╗    ██████╗ ██████╗ ███████╗</span><span style="--i:1">██╔══██╗██╔══██╗   ██╔══██╗██╔══██╗██╔════╝</span><span style="--i:2">██║  ██║██║  ██║   ██████╔╝██████╔╝███████╗</span><span style="--i:3">██║  ██║██║  ██║   ██╔══██╗██╔══██╗╚════██║</span><span style="--i:4">██████╔╝██████╔╝   ██████╔╝██████╔╝███████║</span><span style="--i:5">╚═════╝ ╚═════╝    ╚═════╝ ╚═════╝ ╚══════╝</span></pre>
+    </div>
+    <div class="board" id="board"></div>
+    <div id="sentinel"></div>
+  </div>
+  <div class="status-bar">
+    <div class="pane sunken main">Done</div>
+    <div class="pane sunken" style="width:120px;"></div>
+    <div class="pane sunken" style="width:140px;">
+      <svg width="12" height="12" viewBox="0 0 14 14" shape-rendering="crispEdges">
+        <rect x="4" y="0" width="6" height="1" fill="#0080FF"/>
+        <rect x="2" y="1" width="10" height="1" fill="#0080FF"/>
+        <rect x="1" y="2" width="12" height="1" fill="#00FFFF"/>
+        <rect x="0" y="3" width="14" height="1" fill="#00FFFF"/>
+        <rect x="0" y="4" width="14" height="1" fill="#0080FF"/>
+        <rect x="0" y="5" width="14" height="1" fill="#0080FF"/>
+        <rect x="0" y="6" width="14" height="1" fill="#FFFFFF"/>
+        <rect x="0" y="7" width="14" height="1" fill="#0080FF"/>
+        <rect x="0" y="8" width="14" height="1" fill="#FFFFFF"/>
+        <rect x="0" y="9" width="14" height="1" fill="#00FFFF"/>
+        <rect x="0" y="10" width="14" height="1" fill="#00FFFF"/>
+        <rect x="1" y="11" width="12" height="1" fill="#00FFFF"/>
+        <rect x="2" y="12" width="10" height="1" fill="#0080FF"/>
+        <rect x="4" y="13" width="6" height="1" fill="#0080FF"/>
+      </svg>
+      Internet
+    </div>
+  </div>
+</div>
+<script>
+  const TICK_MS = 100;
+  const MAX_THREADS = 30;
+  const ADD_COUNT = 10;
+
+  const GIF_ROOT = (GIF_DIR === '' || GIF_DIR.endsWith('/')) ? GIF_DIR : GIF_DIR + '/';
+  const GIF_SRCS = Object.fromEntries(
+    Object.entries(GIF_FILE).map(([color, file]) => [
+      color,
+      Array.from({ length: GIF_PHASES }, (_, n) => GIF_ROOT + file.replace('{n}', n))
+    ])
+  );
+
+  function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+  function randNum3() { return String(randInt(0, 999)).padStart(3, '0'); }
+  function randLabel() {
+    const len = randInt(5, 25); let s = '';
+    for (let i = 0; i < len; i++) s += String.fromCharCode(65 + randInt(0, 25));
+    return s;
+  }
+  function shiftChar(ch, offset) {
+    const code = ch.toLowerCase().charCodeAt(0) - 97;
+    return String.fromCharCode(((code + offset) % 26) + 97);
+  }
+  function randId() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+    let s = '';
+    for (let i = 0; i < 8; i++) s += chars[randInt(0, chars.length - 1)];
+    return s;
+  }
+
+  function randomDate() {
+    const start = new Date(1995, 0, 1).getTime();
+    const now = Date.now();
+    const randomTime = start + Math.random() * (now - start);
+    const d = new Date(randomTime);
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    const day = days[d.getDay()];
+    const hh = String(d.getHours()).padStart(2, '0');
+    const mi = String(d.getMinutes()).padStart(2, '0');
+    return `${yyyy}/${mm}/${dd}(${day}) ${hh}:${mi}`;
+  }
+
+  function pickGifColor() {
+    let r = Math.random();
+    for (const [color, rate] of Object.entries(GIF_RATE)) {
+      if (r < rate) return color;
+      r -= rate;
+    }
+    return 'normal';
+  }
+
+  function randomGifSrc() {
+    const color = pickGifColor();
+    const list = GIF_SRCS[color] || GIF_SRCS.normal;
+    return { src: list[randInt(0, list.length - 1)], color: color };
+  }
+
+  function buildPreview(resCount) {
+    let html = '';
+    for (let i = 0; i < resCount; i++) {
+      const gifData = randomGifSrc();
+      const date = randomDate();
+      const id = randId();
+      const imgTag = `<img class="res-gif" src="${gifData.src}" alt="">`;
+      const gifHtml = (gifData.color !== 'normal') 
+        ? `<a href="dd_${gifData.color.charAt(0)}.html">${imgTag}</a>`
+        : imgTag;
+      html += `
+        <div class="res">
+          <div class="res-head">
+            <span class="res-no">${i + 1}</span>
+            Name:
+            <span class="res-name">XXXX</span>
+            Date:
+            <span class="res-date" data-date-idx="${i}">${date}</span>
+            ID:<span class="res-id">${id}</span>
+          </div>
+          <div class="res-body">
+            ${gifHtml}
+          </div>
+        </div>
+      `;
+    }
+    return html;
+  }
+
+  function createThread() {
+    const div = document.createElement('div');
+    div.className = 'thread';
+    const header = document.createElement('div');
+    header.className = 'thread-header';
+    const bullet = document.createElement('span');
+    bullet.className = 'thread-bullet';
+    bullet.textContent = '■';
+    const link = document.createElement('a');
+    link.href = '#';
+    const number = document.createElement('span');
+    number.className = 'thread-no';
+    number.textContent = randNum3();
+    const subject = document.createElement('span');
+    subject.className = 'thread-subject';
+    subject.textContent = randLabel();
+    link.append(number, document.createTextNode(': '), subject);
+    header.append(bullet, link);
+    div.appendChild(header);
+
+    const resCount = randInt(1, 3);
+    const preview = document.createElement('div');
+    preview.className = 'res-preview';
+    preview.innerHTML = buildPreview(resCount);
+    div.appendChild(preview);
+
+    const footer = document.createElement('div');
+    footer.className = 'thread-footer';
+    footer.innerHTML = `
+      [ <a href="#">Read all</a> ]
+      [ <a href="#">Latest 50</a> ]
+      [ <a href="#">1-100</a> ]
+    `;
+    div.appendChild(footer);
+
+    const dateSpans = preview.querySelectorAll('.res-date');
+    const idSpans = preview.querySelectorAll('.res-id');
+    return { el: div, number, subject, dateSpans, idSpans };
+  }
+
+  const board = document.getElementById('board');
+  const threadPool = [];
+
+  function addThreads(count) {
+    for (let i = 0; i < count; i++) {
+      const t = createThread();
+      board.appendChild(t.el);
+      threadPool.push(t);
+    }
+    while (threadPool.length > MAX_THREADS) {
+      const old = threadPool.shift();
+      old.el.remove();
+    }
+  }
+
+  addThreads(ADD_COUNT);
+
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) addThreads(ADD_COUNT);
+  }, { root: document.getElementById('page'), threshold: 0 });
+
+  observer.observe(document.getElementById('sentinel'));
+
+  const BASE_CHARS = ['d','d','b','b','s'];
+  const urlOffsets = [0,0,0,0,0];
+  const addressInput = document.getElementById('address-input');
+
+  function tick() {
+    for (let i = 0; i < urlOffsets.length; i++) urlOffsets[i] = (urlOffsets[i] + 1) % 26;
+    addressInput.value = 'http://www.' + BASE_CHARS.map((ch, i) => shiftChar(ch, urlOffsets[i])).join('') + '.net';
+    for (const t of threadPool) {
+      t.number.textContent = randNum3();
+      t.subject.textContent = randLabel();
+      t.dateSpans.forEach(span => span.textContent = randomDate());
+      t.idSpans.forEach(span => span.textContent = randId());
+    }
+  }
+
+  setInterval(tick, TICK_MS);
+
+  document.getElementById('close-btn').addEventListener('click', function() {
+    window.location.href = 'OK_2_ddbbs.html';
+  });
+
+  document.getElementById('back-btn').addEventListener('click', function() {
+    window.location.href = 'OK_2_ddbbs.html';
+  });
+
+  document.getElementById('home-btn').addEventListener('click', function() {
+    window.location.href = 'OK_2_ddbbs.html';
+  });
+</script>
+</body>
+</html>
