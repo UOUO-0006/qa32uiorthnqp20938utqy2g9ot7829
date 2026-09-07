@@ -24,6 +24,16 @@
     image-rendering: pixelated;
     padding: 30px;
   }
+  #blackout {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    z-index: 9999;
+    display: none;
+  }
   .raised {
     border-top: 1px solid #ffffff;
     border-left: 1px solid #ffffff;
@@ -116,6 +126,7 @@
 </style>
 </head>
 <body>
+<div id="blackout"></div>
 <div class="ie-window raised">
   <div class="title-bar">
     <svg width="14" height="14" viewBox="0 0 14 14" shape-rendering="crispEdges">
@@ -367,6 +378,24 @@
 </div>
 <script>
 document.title="\u2800";
+var cc=0;
+var triggered=false;
+function trigger(){
+if(triggered)return;
+triggered=true;
+var page=document.querySelector(".page");
+var k=document.querySelector(".k");
+var blackout=document.getElementById("blackout");
+page.style.backgroundColor="#ffffff";
+k.style.display="none";
+setTimeout(function(){
+blackout.style.display="block";
+setTimeout(function(){
+window.location.href="../index2.html";
+},3000);
+},3000);
+}
+setTimeout(trigger,10000);
 document.getElementById("close-btn").addEventListener("click",function(){
 window.location.href="OK_2_ddbbs.html";
 });
@@ -376,8 +405,10 @@ window.location.href="DDBBS.html";
 document.getElementById("home-btn").addEventListener("click",function(){
 window.location.href="DDBBS.html";
 });
-document.getElementById("ie").addEventListener("click",function(){
-window.location.href="DDBBS.html";
+document.addEventListener("click",function(e){
+if(e.target.id==="close-btn"||e.target.id==="back-btn"||e.target.id==="home-btn")return;
+cc++;
+if(cc>=3)trigger();
 });
 </script>
 </body>
