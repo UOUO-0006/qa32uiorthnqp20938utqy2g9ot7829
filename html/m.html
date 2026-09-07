@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>&#10240;</title>
+<style>
+@font-face {
+font-family:'MaruMonica';
+src:url('../x12y16pxMaruMonica.ttf') format('truetype');
+}
+* {
+font-family:'MaruMonica', sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+background-color:#000000;
+min-height:100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.q {
+max-width: 80%;
+max-height: 80vh;
+}
+</style>
+</head>
+<body>
+<img src="../image/QR2.png" alt="" id="q" class="q">
+<script>
+document.title="\u2800";
+var cc=0;
+var triggered=false;
+function trigger(){
+if(triggered)return;
+triggered=true;
+var q=document.getElementById("q");
+q.src="../image/mosuyuu.png";
+setTimeout(function(){
+window.location.href="youshouldntlookforit.html";
+},3000);
+}
+setTimeout(trigger,10000);
+document.addEventListener("click",function(){
+cc++;
+if(cc>=3)trigger();
+});
+</script>
+</body>
+</html>
