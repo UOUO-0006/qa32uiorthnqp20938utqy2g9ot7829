@@ -50,5 +50,14 @@ cc++;
 if(cc>=3)trigger();
 });
 </script>
+<script>
+document.addEventListener("keydown",function(e){
+if(e.key==="F12"){e.preventDefault();return;}
+if(e.ctrlKey||e.metaKey){
+var k=e.key.toLowerCase();
+if(k==="u"||k==="s"||(e.shiftKey&&(k==="i"||k==="j"||k==="c"))||(e.altKey&&(k==="i"||k==="j"||k==="c"))){e.preventDefault();}
+}
+});
+</script>
 </body>
 </html>

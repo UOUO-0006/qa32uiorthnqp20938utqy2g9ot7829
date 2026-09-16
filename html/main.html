@@ -187,6 +187,7 @@ document.title="\u2800";
 document.getElementById("door").addEventListener("click",function(){
 localStorage.removeItem("q1");
 localStorage.removeItem("q2");
+localStorage.removeItem("q3");
 window.location.href=atob("Li4vaW5kZXguaHRtbA==");
 });
 function sh(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}}
@@ -194,19 +195,22 @@ function hm(){for(var i=0;i<s.length;i++){if(s[i]===m[i])return true;}return fal
 function ss(){localStorage.setItem("q1",JSON.stringify({s:s,m:m,o:o,d:d}));}
 var sv=localStorage.getItem("q1");
 var s,m,o,d;
-if(sv){
-var st=JSON.parse(sv);
-s=st.s;m=st.m;o=st.o;d=st.d;
-}else{
-s=["beam","ddbbs","maybe","me","mirror","ninV","osetuma","saiki","toi","TT","apV"];
-m=["beam","ddbbs","maybe","me","mirror","ninV","osetuma","saiki","toi","TT","apV"];
+function iw(){
+s=["beam","ddbbs","maybe","me","mirror","ninV","osetuma","saiki","toi","TT"];
+m=["beam","ddbbs","maybe","me","mirror","ninV","osetuma","saiki","toi","TT"];
 sh(s);
 sh(m);
 while(hm()){sh(m);}
-o=["maybe","me","toi","TT","saiki","osetuma","beam","ddbbs","mirror","ninV","apV"];
+o=["maybe","me","toi","saiki","ninV","osetuma","beam","TT","ddbbs","mirror"];
 d=[];
 for(var i=0;i<s.length;i++){d.push(o.indexOf(m[i]));}
 ss();
+}
+if(sv){
+var st=JSON.parse(sv);
+if(st.s.length===10&&st.m.length===10&&st.o.length===10&&st.d.length===10){s=st.s;m=st.m;o=st.o;d=st.d;}else{iw();}
+}else{
+iw();
 }
 var v=document.getElementById("v");
 var sp='<svg class="e" viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>';
@@ -275,6 +279,15 @@ aa.forEach(function(a){
 a.addEventListener("ended",function(){
 a.closest(".r").querySelector(".b").classList.remove("v");
 });
+});
+</script>
+<script>
+document.addEventListener("keydown",function(e){
+if(e.key==="F12"){e.preventDefault();return;}
+if(e.ctrlKey||e.metaKey){
+var k=e.key.toLowerCase();
+if(k==="u"||k==="s"||(e.shiftKey&&(k==="i"||k==="j"||k==="c"))||(e.altKey&&(k==="i"||k==="j"||k==="c"))){e.preventDefault();}
+}
 });
 </script>
 </body>
