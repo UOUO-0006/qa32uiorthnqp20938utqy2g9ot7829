@@ -29,9 +29,9 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: flex-start;
-min-height:200vh;
 box-sizing: border-box;
 position: relative;
+min-height:100vh;
 }
 img {
 max-width:90%;
@@ -84,18 +84,74 @@ cursor: pointer;
 <div class="c">
 <img src="../image/return.png" alt="" id="r" style="cursor:pointer;">
 </div>
-<div class="k">
-<img src="../image/m_.png" alt="" id="m">
-</div>
 <script>
 document.title="\u2800";
 var p="bWFpbjIuaHRtbA==";
+var q="bS5odG1s";
+var n=2000;
+var s=120;
+var t=250;
+var g=1000;
+var a=0;
+var f=1;
+var h=null;
+function u(){
+if(!f){return;}
+f=0;
+var c=document.createElement("div");
+c.className="k";
+var m=document.createElement("img");
+m.id="m";
+m.alt="";
+m.src="../image/m_.png";
+m.style.cursor="pointer";
+m.addEventListener("click",function(){
+window.location.href=atob(q);
+});
+c.appendChild(m);
+document.body.appendChild(c);
+document.body.style.minHeight=t+"vh";
+}
+function d(v){
+if(!f){return;}
+a=a+v;
+if(a<0){a=0;}
+if(v>0){
+if(h){clearTimeout(h);}
+h=setTimeout(function(){a=0;},g);
+}
+if(a>=n){
+if(h){clearTimeout(h);}
+u();
+}
+}
 document.getElementById("r").addEventListener("click",function(){
 window.location.href=atob(p);
 });
-document.getElementById("m").addEventListener("click",function(){
-window.location.href="m.html";
+window.addEventListener("wheel",function(e){
+d(e.deltaY);
+},{passive:true});
+window.addEventListener("keydown",function(e){
+if(e.ctrlKey||e.metaKey||e.altKey){return;}
+var k=e.key;
+if(k==="ArrowDown"||k==="PageDown"||k==="End"||k===" "||k==="Spacebar"){
+d(s);
+return;
+}
+if(k==="ArrowUp"||k==="PageUp"||k==="Home"){
+d(-s);
+}
 });
+var y=null;
+window.addEventListener("touchstart",function(e){
+if(e.touches.length===1){y=e.touches[0].clientY;}else{y=null;}
+},{passive:true});
+window.addEventListener("touchmove",function(e){
+if(y===null||e.touches.length!==1){return;}
+var z=e.touches[0].clientY;
+d(y-z);
+y=z;
+},{passive:true});
 </script>
 <script>
 document.addEventListener("keydown",function(e){
@@ -106,5 +162,5 @@ if(k==="u"||k==="s"||(e.shiftKey&&(k==="i"||k==="j"||k==="c"))||(e.altKey&&(k===
 }
 });
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a41260692844d53e',t:'MTc5MDQyNjg0MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
