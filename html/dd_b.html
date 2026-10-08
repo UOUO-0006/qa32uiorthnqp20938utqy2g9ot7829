@@ -5,11 +5,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>&#10240;</title>
 <style>
-  @font-face {
-    font-family: "Misaki";
-    src: url("https://cdn.jsdelivr.net/gh/george-angelov/misaki-font@main/misaki_gothic.ttf") format("truetype");
-    font-display: swap;
-  }
+
   :root {
     --C0: #000000;
     --C1: #FFFFFF;
@@ -24,27 +20,27 @@
     image-rendering: pixelated;
     padding: 30px;
   }
-  .raised {
+  .c24 {
     border-top: 1px solid #ffffff;
     border-left: 1px solid #ffffff;
     border-right: 1px solid #404040;
     border-bottom: 1px solid #404040;
     box-shadow: inset 1px 1px 0 #dfdfdf, inset -1px -1px 0 #808080;
   }
-  .sunken {
+  .c26 {
     border-top: 1px solid #808080;
     border-left: 1px solid #808080;
     border-right: 1px solid #ffffff;
     border-bottom: 1px solid #ffffff;
     box-shadow: inset 1px 1px 0 #404040, inset -1px -1px 0 #dfdfdf;
   }
-  .ie-window {
+  .c10 {
     width: 780px;
     margin: 0 auto;
     background: #c0c0c0;
     padding: 3px;
   }
-  .title-bar {
+  .c30 {
     background: linear-gradient(to right, #000080, #1084d0);
     color: #fff;
     display: flex;
@@ -53,9 +49,9 @@
     padding: 0 3px;
     gap: 4px;
   }
-  .title-bar .title { flex: 1; font-weight: bold; font-size: 12px; overflow: hidden; white-space: nowrap; }
-  .title-bar .buttons { display: flex; gap: 2px; }
-  .title-bar .buttons button {
+  .c30 .c29 { flex: 1; font-weight: bold; font-size: 12px; overflow: hidden; white-space: nowrap; }
+  .c30 .c4 { display: flex; gap: 2px; }
+  .c30 .c4 button {
     width: 16px; height: 14px;
     background: #c0c0c0;
     font-family: "Marlett", "MS Gothic", monospace;
@@ -64,29 +60,29 @@
     cursor: pointer;
     border: none;
   }
-  .menu-bar { display: flex; background: #c0c0c0; padding: 1px 0; border-bottom: 1px solid #808080; }
-  .menu-bar span { padding: 3px 8px; cursor: default; }
-  .menu-bar span:hover { background: #000080; color: #fff; }
-  .toolbar { display: flex; align-items: center; background: #c0c0c0; padding: 2px 4px; border-bottom: 1px solid #808080; gap: 1px; }
-  .tb-btn {
+  .c13 { display: flex; background: #c0c0c0; padding: 1px 0; border-bottom: 1px solid #808080; }
+  .c13 span { padding: 3px 8px; cursor: default; }
+  .c13 span:hover { background: #000080; color: #fff; }
+  .c31 { display: flex; align-items: center; background: #c0c0c0; padding: 2px 4px; border-bottom: 1px solid #808080; gap: 1px; }
+  .c27 {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     min-width: 48px; height: 42px; background: transparent;
     border: 1px solid transparent; cursor: pointer; font-family: inherit; font-size: 11px; gap: 1px;
   }
-  .tb-btn:hover { border-top: 1px solid #ffffff; border-left: 1px solid #ffffff; border-right: 1px solid #808080; border-bottom: 1px solid #808080; }
-  .tb-btn:active { border-top: 1px solid #808080; border-left: 1px solid #808080; border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff; }
-  .tb-btn .icon { line-height: 0; }
-  .tb-btn.disabled { color: #808080; opacity: 0.5; }
-  .tb-btn.disabled svg { opacity: 0.4; }
-  .tb-sep { width: 1px; height: 38px; background: #808080; border-right: 1px solid #ffffff; margin: 0 3px; }
-  .address-bar { display: flex; align-items: center; background: #c0c0c0; padding: 2px 4px; gap: 6px; border-bottom: 1px solid #808080; }
-  .address-bar label { white-space: nowrap; }
-  .address-bar .address-field { flex: 1; display: flex; align-items: center; background: #ffffff; height: 22px; padding: 0 3px; gap: 4px; }
-  .address-field input { flex: 1; border: none; outline: none; font-family: inherit; font-size: 12px; -webkit-font-smoothing: none; }
-  .address-field .drop { width: 16px; height: 18px; background: #c0c0c0; font-size: 9px; cursor: pointer; border: none; }
+  .c27:hover { border-top: 1px solid #ffffff; border-left: 1px solid #ffffff; border-right: 1px solid #808080; border-bottom: 1px solid #808080; }
+  .c27:active { border-top: 1px solid #808080; border-left: 1px solid #808080; border-right: 1px solid #ffffff; border-bottom: 1px solid #ffffff; }
+  .c27 .c8 { line-height: 0; }
+  .c27.disabled { color: #808080; opacity: 0.5; }
+  .c27.disabled svg { opacity: 0.4; }
+  .c28 { width: 1px; height: 38px; background: #808080; border-right: 1px solid #ffffff; margin: 0 3px; }
+  .c0 { display: flex; align-items: center; background: #c0c0c0; padding: 2px 4px; gap: 6px; border-bottom: 1px solid #808080; }
+  .c0 label { white-space: nowrap; }
+  .c0 .c1 { flex: 1; display: flex; align-items: center; background: #ffffff; height: 22px; padding: 0 3px; gap: 4px; }
+  .c1 input { flex: 1; border: none; outline: none; font-family: inherit; font-size: 12px; -webkit-font-smoothing: none; }
+  .c1 .c6 { width: 16px; height: 18px; background: #c0c0c0; font-size: 9px; cursor: pointer; border: none; }
   .go-btn { display: flex; align-items: center; height: 22px; padding: 0 10px; background: transparent; border: 1px solid transparent; font-family: inherit; cursor: pointer; }
   .go-btn:hover { border-top: 1px solid #fff; border-left: 1px solid #fff; border-right: 1px solid #808080; border-bottom: 1px solid #808080; }
-  .page {
+  .c22 {
     background: var(--C0);
     height: 440px;
     overflow-y: auto;
@@ -96,298 +92,48 @@
     align-items: center;
     justify-content: center;
   }
-  .page::-webkit-scrollbar { display: none; }
-  .status-bar { display: flex; background: #c0c0c0; padding: 2px; gap: 2px; }
-  .status-bar .pane { padding: 2px 6px; height: 20px; display: flex; align-items: center; gap: 4px; }
-  .status-bar .main { flex: 1; }
-  .k {
+  .c22::-webkit-scrollbar { display: none; }
+  .c25 { display: flex; background: #c0c0c0; padding: 2px; gap: 2px; }
+  .c25 .c23 { padding: 2px 6px; height: 20px; display: flex; align-items: center; gap: 4px; }
+  .c25 .c12 { flex: 1; }
+  .c11 {
     text-align: center;
   }
-  .k img {
+  .c11 img {
     max-width: 120px;
     cursor: pointer;
     image-rendering: pixelated;
   }
-  .tb-btn svg, .title-bar svg, .address-field svg, .status-bar svg {
+  .c27 svg, .c30 svg, .c1 svg, .c25 svg {
     display: block;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
   }
+
+@font-face{font-family:u;src:url('../image/ms_sans_serif.woff2') format('woff2')}@font-face{font-family:u;src:url('../image/ms_sans_serif_bold.woff2') format('woff2');font-weight:bold}
+.c30,.c13,.c31,.c0,.c25{font-family:u,'MS Sans Serif',Arial,sans-serif;font-size:11px;line-height:13px}
+.c30{height:18px;background:#000080;padding:1px 2px;gap:3px}.c30 .c29{font-size:11px}.c30 .c4{gap:2px}.c30 .c4 button{position:relative;width:16px;height:14px;border-top:1px solid white;border-left:1px solid white;border-right:1px solid #000;border-bottom:1px solid #000;box-shadow:inset -1px -1px #808080,inset 1px 1px #dfdfdf}.c30 .c4 button:last-child{margin-left:2px}
+.c14{position:absolute;width:6px;height:2px;background:#000;left:3px;bottom:3px}.c15{position:absolute;left:2px;top:2px;width:9px;height:8px;border:1px solid #000;border-top-width:2px}.c16{position:absolute;left:3px;top:2px;width:8px;height:8px;background:linear-gradient(45deg,transparent 40%,#000 40%,#000 60%,transparent 60%),linear-gradient(-45deg,transparent 40%,#000 40%,#000 60%,transparent 60%)}
+.c13{height:26px;padding:1px 0;border-top:1px solid #fff;align-items:center}.c13 span{padding:3px 7px}.c17{margin-left:auto;width:40px;height:22px;background:#000;display:flex;align-items:center;justify-content:center;border-left:1px solid #808080}.c13 span:hover{background:#c0c0c0;color:#000;box-shadow:inset 1px 1px #fff,inset -1px -1px #808080}
+.c31{height:45px;padding:1px 2px;gap:0;border-top:1px solid white}.c18{display:block;flex:none;width:3px;height:32px;margin-right:4px;border-left:1px solid #fff;border-right:1px solid #808080}.c27{position:relative;min-width:53px;height:40px;font-size:11px;gap:2px;padding:0 3px;color:#000}.c27 .c8{display:block;width:20px;height:20px;background-image:url('../image/u6.png');background-repeat:no-repeat}.c27:hover .c8{background-image:url('../image/u5.png')}.c27:disabled{color:#808080;text-shadow:1px 1px #fff;cursor:default}.c27:disabled .c8{opacity:.4}.c27:disabled:hover{border-color:transparent}.c27:disabled:hover .c8{background-image:url('../image/u6.png')}.c28{height:36px;min-width:2px;margin:0 3px}.c19{display:block;width:0;height:0;border-left:3px solid transparent;border-right:3px solid transparent;border-top:3px solid #000}.c27>.c19{position:absolute;right:1px;top:13px}.c27:has(>.c19){padding-right:10px;min-width:61px}
+.c0{height:27px;padding:2px;gap:4px;border-top:1px solid white}.c0>.c18,.c20 .c18{height:19px}.c0 .c1{height:22px;padding:2px;min-width:0;gap:3px}.c1 input{font-family:u,'MS Sans Serif',sans-serif;font-size:11px;min-width:0;width:0}.c1 .c6{height:18px;width:16px;display:flex;align-items:center;justify-content:center;flex:none}.c20{display:flex;align-items:center;width:47px;margin-left:2px}
+.c25{position:relative;height:23px;padding:2px 12px 0 0;gap:2px}.c25 .c23{height:19px;padding:0 2px;gap:3px;border:1px solid;border-color:#808080 #fff #fff #808080;box-shadow:none}.c21{position:absolute;right:0;bottom:0;width:12px;height:12px;background:repeating-linear-gradient(135deg,transparent 0px,transparent 2px,#808080 2px,#808080 3px,#fff 3px,#fff 4px);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.c22::-webkit-scrollbar-track{background:repeating-conic-gradient(#c0c0c0 0 25%,#dfdfdf 0 50%) 0 0/2px 2px;box-shadow:none;border:0}.c22::-webkit-scrollbar-thumb:hover{background:#c0c0c0}.c22::-webkit-scrollbar-button:hover{background-color:#c0c0c0}.c22::-webkit-scrollbar-button:vertical:start:increment,.c22::-webkit-scrollbar-button:vertical:end:decrement{display:none}
+
+button > * {pointer-events:none}
 </style>
 </head>
 <body>
-<div class="ie-window raised">
-  <div class="title-bar">
-    <svg width="14" height="14" viewBox="0 0 14 14" shape-rendering="crispEdges">
-      <rect x="4" y="0" width="6" height="1" fill="#00FFFF"/>
-      <rect x="2" y="1" width="2" height="1" fill="#0080FF"/>
-      <rect x="4" y="1" width="6" height="1" fill="#00FFFF"/>
-      <rect x="10" y="1" width="2" height="1" fill="#0080FF"/>
-      <rect x="1" y="2" width="1" height="1" fill="#0080FF"/>
-      <rect x="2" y="2" width="10" height="1" fill="#00FFFF"/>
-      <rect x="12" y="2" width="1" height="1" fill="#0080FF"/>
-      <rect x="0" y="3" width="1" height="1" fill="#0080FF"/>
-      <rect x="1" y="3" width="12" height="1" fill="#00FFFF"/>
-      <rect x="13" y="3" width="1" height="1" fill="#0080FF"/>
-      <rect x="0" y="4" width="14" height="1" fill="#0080FF"/>
-      <rect x="1" y="4" width="12" height="1" fill="#00FFFF"/>
-      <rect x="0" y="5" width="1" height="1" fill="#0080FF"/>
-      <rect x="1" y="5" width="12" height="1" fill="#0080FF"/>
-      <rect x="13" y="5" width="1" height="1" fill="#0080FF"/>
-      <rect x="0" y="6" width="14" height="1" fill="#FFFFFF"/>
-      <rect x="0" y="7" width="1" height="1" fill="#0080FF"/>
-      <rect x="1" y="7" width="12" height="1" fill="#0080FF"/>
-      <rect x="13" y="7" width="1" height="1" fill="#0080FF"/>
-      <rect x="0" y="8" width="14" height="1" fill="#FFFFFF"/>
-      <rect x="0" y="9" width="1" height="1" fill="#0080FF"/>
-      <rect x="1" y="9" width="12" height="1" fill="#00FFFF"/>
-      <rect x="13" y="9" width="1" height="1" fill="#0080FF"/>
-      <rect x="0" y="10" width="1" height="1" fill="#0080FF"/>
-      <rect x="1" y="10" width="12" height="1" fill="#00FFFF"/>
-      <rect x="13" y="10" width="1" height="1" fill="#0080FF"/>
-      <rect x="1" y="11" width="1" height="1" fill="#0080FF"/>
-      <rect x="2" y="11" width="10" height="1" fill="#00FFFF"/>
-      <rect x="12" y="11" width="1" height="1" fill="#0080FF"/>
-      <rect x="2" y="12" width="2" height="1" fill="#0080FF"/>
-      <rect x="4" y="12" width="6" height="1" fill="#00FFFF"/>
-      <rect x="10" y="12" width="2" height="1" fill="#0080FF"/>
-      <rect x="4" y="13" width="6" height="1" fill="#0080FF"/>
-    </svg>
-    <span class="title">DD BBS - Internet Explorer</span>
-    <span class="buttons">
-      <button class="raised">_</button>
-      <button class="raised">□</button>
-      <button class="raised" id="close-btn">×</button>
-    </span>
-  </div>
-  <div class="menu-bar">
-    <span>File(<u>F</u>)</span>
-    <span>Edit(<u>E</u>)</span>
-    <span>View(<u>V</u>)</span>
-    <span>Favorites(<u>A</u>)</span>
-    <span>Tools(<u>T</u>)</span>
-    <span>Help(<u>H</u>)</span>
-  </div>
-  <div class="toolbar">
-    <button class="tb-btn" id="back-btn"><span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" shape-rendering="crispEdges">
-      <rect x="8" y="2" width="2" height="2" fill="#008000"/>
-      <rect x="6" y="4" width="2" height="2" fill="#008000"/>
-      <rect x="4" y="6" width="2" height="2" fill="#008000"/>
-      <rect x="2" y="8" width="2" height="2" fill="#008000"/>
-      <rect x="4" y="10" width="2" height="2" fill="#008000"/>
-      <rect x="6" y="12" width="2" height="2" fill="#008000"/>
-      <rect x="8" y="14" width="2" height="2" fill="#008000"/>
-      <rect x="4" y="8" width="14" height="2" fill="#00FF00"/>
-      <rect x="2" y="8" width="2" height="2" fill="#00FF00"/>
-    </svg></span>Back</button>
-    <button class="tb-btn disabled"><span class="icon"><svg width="20" height="20" viewBox="0 0 20 20" shape-rendering="crispEdges">
-      <rect x="10" y="2" width="2" height="2" fill="#008000"/>
-      <rect x="12" y="4" width="2" height="2" fill="#008000"/>
-      <rect x="14" y="6" width="2" height="2" fill="#008000"/>
-      <rect x="16" y="8" width="2" height="2" fill="#008000"/>
-      <rect x="14" y="10" width="2" height="2" fill="#008000"/>
-      <rect x="12" y="12" width="2" height="2" fill="#008000"/>
-      <rect x="10" y="14" width="2" height="2" fill="#008000"/>
-      <rect x="2" y="8" width="14" height="2" fill="#00FF00"/>
-      <rect x="16" y="8" width="2" height="2" fill="#00FF00"/>
-    </svg></span>Forward</button>
-    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="3" y="3" width="2" height="2" fill="#FF0000"/>
-      <rect x="5" y="5" width="2" height="2" fill="#FF0000"/>
-      <rect x="7" y="7" width="2" height="2" fill="#FF0000"/>
-      <rect x="9" y="9" width="2" height="2" fill="#FF0000"/>
-      <rect x="11" y="11" width="2" height="2" fill="#FF0000"/>
-      <rect x="13" y="3" width="2" height="2" fill="#FF0000"/>
-      <rect x="11" y="5" width="2" height="2" fill="#FF0000"/>
-      <rect x="5" y="11" width="2" height="2" fill="#FF0000"/>
-      <rect x="3" y="13" width="2" height="2" fill="#FF0000"/>
-    </svg></span>Stop</button>
-    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="6" y="2" width="6" height="2" fill="#00AA00"/>
-      <rect x="4" y="4" width="2" height="2" fill="#00AA00"/>
-      <rect x="12" y="4" width="2" height="2" fill="#00AA00"/>
-      <rect x="2" y="6" width="2" height="2" fill="#00AA00"/>
-      <rect x="14" y="6" width="2" height="2" fill="#00AA00"/>
-      <rect x="2" y="8" width="2" height="2" fill="#00AA00"/>
-      <rect x="14" y="8" width="2" height="2" fill="#00AA00"/>
-      <rect x="4" y="10" width="2" height="2" fill="#00AA00"/>
-      <rect x="12" y="10" width="2" height="2" fill="#00AA00"/>
-      <rect x="14" y="10" width="2" height="2" fill="#00AA00"/>
-      <rect x="2" y="6" width="6" height="2" fill="#00FF00"/>
-      <rect x="10" y="10" width="6" height="2" fill="#00FF00"/>
-      <rect x="6" y="12" width="6" height="2" fill="#00AA00"/>
-    </svg></span>Refresh</button>
-    <button class="tb-btn" id="home-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="8" y="1" width="2" height="2" fill="#000080"/>
-      <rect x="6" y="3" width="2" height="2" fill="#000080"/>
-      <rect x="10" y="3" width="2" height="2" fill="#000080"/>
-      <rect x="4" y="5" width="2" height="2" fill="#000080"/>
-      <rect x="12" y="5" width="2" height="2" fill="#000080"/>
-      <rect x="2" y="7" width="2" height="2" fill="#000080"/>
-      <rect x="14" y="7" width="2" height="2" fill="#000080"/>
-      <rect x="4" y="9" width="10" height="2" fill="#0000FF"/>
-      <rect x="4" y="11" width="4" height="4" fill="#0000FF"/>
-      <rect x="10" y="11" width="4" height="4" fill="#0000FF"/>
-      <rect x="7" y="12" width="4" height="4" fill="#FFFF00"/>
-    </svg></span>Home</button>
-    <span class="tb-sep"></span>
-    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="5" y="2" width="4" height="2" fill="#000000"/>
-      <rect x="3" y="4" width="2" height="2" fill="#000000"/>
-      <rect x="9" y="4" width="2" height="2" fill="#000000"/>
-      <rect x="3" y="6" width="2" height="2" fill="#000000"/>
-      <rect x="9" y="6" width="2" height="2" fill="#000000"/>
-      <rect x="5" y="8" width="4" height="2" fill="#000000"/>
-      <rect x="5" y="4" width="4" height="4" fill="#00FFFF"/>
-      <rect x="9" y="8" width="2" height="2" fill="#000000"/>
-      <rect x="11" y="10" width="2" height="2" fill="#808000"/>
-      <rect x="13" y="12" width="2" height="2" fill="#808000"/>
-    </svg></span>Search</button>
-    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="8" y="1" width="2" height="2" fill="#FFD700"/>
-      <rect x="8" y="3" width="2" height="2" fill="#FFD700"/>
-      <rect x="2" y="5" width="14" height="2" fill="#FFD700"/>
-      <rect x="4" y="7" width="10" height="2" fill="#FFD700"/>
-      <rect x="4" y="9" width="4" height="2" fill="#FFD700"/>
-      <rect x="10" y="9" width="4" height="2" fill="#FFD700"/>
-      <rect x="2" y="11" width="4" height="2" fill="#FFD700"/>
-      <rect x="12" y="11" width="4" height="2" fill="#FFD700"/>
-      <rect x="2" y="13" width="2" height="2" fill="#FFD700"/>
-      <rect x="14" y="13" width="2" height="2" fill="#FFD700"/>
-    </svg></span>Favorites</button>
-    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="5" y="2" width="6" height="2" fill="#000080"/>
-      <rect x="3" y="4" width="2" height="2" fill="#000080"/>
-      <rect x="13" y="4" width="2" height="2" fill="#000080"/>
-      <rect x="2" y="6" width="1" height="4" fill="#000080"/>
-      <rect x="15" y="6" width="1" height="4" fill="#000080"/>
-      <rect x="3" y="10" width="2" height="2" fill="#000080"/>
-      <rect x="13" y="10" width="2" height="2" fill="#000080"/>
-      <rect x="5" y="12" width="6" height="2" fill="#000080"/>
-      <rect x="3" y="4" width="12" height="8" fill="#FFFFFF"/>
-      <rect x="5" y="2" width="6" height="1" fill="#000080"/>
-      <rect x="3" y="3" width="2" height="1" fill="#000080"/>
-      <rect x="13" y="3" width="2" height="1" fill="#000080"/>
-      <rect x="2" y="5" width="1" height="6" fill="#000080"/>
-      <rect x="15" y="5" width="1" height="6" fill="#000080"/>
-      <rect x="3" y="11" width="2" height="1" fill="#000080"/>
-      <rect x="13" y="11" width="2" height="1" fill="#000080"/>
-      <rect x="5" y="12" width="8" height="1" fill="#000080"/>
-      <rect x="3" y="4" width="12" height="7" fill="#FFFFFF"/>
-      <rect x="8" y="4" width="2" height="4" fill="#000000"/>
-      <rect x="8" y="8" width="4" height="2" fill="#000000"/>
-    </svg></span>History</button>
-    <span class="tb-sep"></span>
-    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="1" y="4" width="16" height="10" fill="#FFFFFF"/>
-      <rect x="1" y="4" width="16" height="1" fill="#000000"/>
-      <rect x="1" y="4" width="1" height="10" fill="#000000"/>
-      <rect x="16" y="4" width="1" height="10" fill="#000000"/>
-      <rect x="1" y="13" width="16" height="1" fill="#000000"/>
-      <rect x="2" y="5" width="2" height="2" fill="#808080"/>
-      <rect x="14" y="5" width="2" height="2" fill="#808080"/>
-      <rect x="4" y="7" width="2" height="2" fill="#808080"/>
-      <rect x="12" y="7" width="2" height="2" fill="#808080"/>
-      <rect x="6" y="9" width="2" height="2" fill="#808080"/>
-      <rect x="10" y="9" width="2" height="2" fill="#808080"/>
-      <rect x="8" y="9" width="2" height="2" fill="#808080"/>
-    </svg></span>Mail</button>
-    <button class="tb-btn"><span class="icon"><svg width="18" height="18" viewBox="0 0 18 18" shape-rendering="crispEdges">
-      <rect x="4" y="1" width="10" height="4" fill="#FFFFFF"/>
-      <rect x="4" y="1" width="10" height="1" fill="#000000"/>
-      <rect x="4" y="1" width="1" height="4" fill="#000000"/>
-      <rect x="13" y="1" width="1" height="4" fill="#000000"/>
-      <rect x="1" y="5" width="16" height="7" fill="#C0C0C0"/>
-      <rect x="1" y="5" width="16" height="1" fill="#000000"/>
-      <rect x="1" y="5" width="1" height="7" fill="#000000"/>
-      <rect x="16" y="5" width="1" height="7" fill="#000000"/>
-      <rect x="1" y="11" width="16" height="1" fill="#000000"/>
-      <rect x="13" y="7" width="2" height="2" fill="#00AA00"/>
-      <rect x="4" y="12" width="10" height="4" fill="#FFFFFF"/>
-      <rect x="4" y="12" width="1" height="4" fill="#000000"/>
-      <rect x="13" y="12" width="1" height="4" fill="#000000"/>
-      <rect x="4" y="15" width="10" height="1" fill="#000000"/>
-      <rect x="6" y="13" width="6" height="1" fill="#808080"/>
-    </svg></span>Print</button>
-  </div>
-  <div class="address-bar">
-    <label>Address(<u>D</u>)</label>
-    <div class="address-field sunken">
-      <svg width="12" height="14" viewBox="0 0 12 14" shape-rendering="crispEdges">
-        <rect x="0" y="0" width="8" height="14" fill="#FFFFFF"/>
-        <rect x="0" y="0" width="8" height="1" fill="#000000"/>
-        <rect x="0" y="0" width="1" height="14" fill="#000000"/>
-        <rect x="0" y="13" width="12" height="1" fill="#000000"/>
-        <rect x="11" y="3" width="1" height="11" fill="#000000"/>
-        <rect x="8" y="0" width="1" height="1" fill="#000000"/>
-        <rect x="9" y="1" width="1" height="1" fill="#000000"/>
-        <rect x="10" y="2" width="1" height="1" fill="#000000"/>
-        <rect x="8" y="1" width="1" height="3" fill="#C0C0C0"/>
-        <rect x="9" y="2" width="1" height="2" fill="#C0C0C0"/>
-        <rect x="10" y="3" width="1" height="1" fill="#C0C0C0"/>
-        <rect x="1" y="3" width="7" height="1" fill="#0000FF"/>
-        <rect x="2" y="5" width="6" height="1" fill="#808080"/>
-        <rect x="2" y="7" width="8" height="1" fill="#808080"/>
-        <rect x="2" y="9" width="8" height="1" fill="#808080"/>
-        <rect x="2" y="11" width="5" height="1" fill="#808080"/>
-      </svg>
-      <input type="text" readonly value="http://www.ddbbs.net">
-      <button class="drop raised">▼</button>
-    </div>
-    <button class="go-btn">Go</button>
-  </div>
-  <div class="page sunken">
-    <div class="k">
-      <img src="../image/ie.png" alt="" id="ie">
+<div class="c10 c24">
+<div class="c30"><img src="../image/u3.png" width="16" height="16" alt=""><span class="c29">DD BBS - Microsoft Internet Explorer</span><span class="c4"><button class="c24"><i class="c14"></i></button><button class="c24"><i class="c15"></i></button><button class="c24" id="c5"><i class="c16"></i></button></span></div>
+<div class="c13"><span><u>F</u>ile</span><span><u>E</u>dit</span><span><u>V</u>iew</span><span><u>G</u>o</span><span>F<u>a</u>vorites</span><span><u>H</u>elp</span><div class="c17"><img src="../image/u3.png" width="16" height="16" alt=""></div></div><div class="c31"><i class="c18"></i><button class="c27" id="c3"><span class="c8" style="background-position:-0px 0"></span><span>Back</span><i class="c19"></i></button><button class="c27" disabled><span class="c8" style="background-position:-20px 0"></span><span>Forward</span><i class="c19"></i></button><button class="c27"><span class="c8" style="background-position:-40px 0"></span><span>Stop</span></button><button class="c27"><span class="c8" style="background-position:-60px 0"></span><span>Refresh</span></button><button class="c27" id="c7"><span class="c8" style="background-position:-80px 0"></span><span>Home</span></button><span class="c28"></span><button class="c27"><span class="c8" style="background-position:-100px 0"></span><span>Search</span></button><button class="c27"><span class="c8" style="background-position:-120px 0"></span><span>Favorites</span></button><button class="c27"><span class="c8" style="background-image:url(../image/u7.png);background-position:0 0"></span><span>History</span></button><button class="c27"><span class="c8" style="background-image:url(../image/u8.png);background-position:0 0"></span><span>Channels</span></button><span class="c28"></span><button class="c27"><span class="c8" style="background-position:-260px 0"></span><span>Mail</span><i class="c19"></i></button><button class="c27"><span class="c8" style="background-position:-140px 0"></span><span>Print</span></button></div><div class="c0"><i class="c18"></i><label for="c2">A<u>d</u>dress</label><div class="c1 c26"><img src="../image/u3.png" width="16" height="16" alt=""><input type="text" id="c2" readonly value="http://www.ddbbs.net"><button class="c6 c24"><i class="c19"></i></button></div><span class="c20"><i class="c18"></i>Links</span></div>
+  <div class="c22 c26">
+    <div class="c11">
+      <img src="../image/ie.png" alt="" id="c9">
     </div>
   </div>
-  <div class="status-bar">
-    <div class="pane sunken main">Done</div>
-    <div class="pane sunken" style="width:120px;"></div>
-    <div class="pane sunken" style="width:140px;">
-      <svg width="12" height="12" viewBox="0 0 14 14" shape-rendering="crispEdges">
-        <rect x="4" y="0" width="6" height="1" fill="#0080FF"/>
-        <rect x="2" y="1" width="10" height="1" fill="#0080FF"/>
-        <rect x="1" y="2" width="12" height="1" fill="#00FFFF"/>
-        <rect x="0" y="3" width="14" height="1" fill="#00FFFF"/>
-        <rect x="0" y="4" width="14" height="1" fill="#0080FF"/>
-        <rect x="0" y="5" width="14" height="1" fill="#0080FF"/>
-        <rect x="0" y="6" width="14" height="1" fill="#FFFFFF"/>
-        <rect x="0" y="7" width="14" height="1" fill="#0080FF"/>
-        <rect x="0" y="8" width="14" height="1" fill="#FFFFFF"/>
-        <rect x="0" y="9" width="14" height="1" fill="#00FFFF"/>
-        <rect x="0" y="10" width="14" height="1" fill="#00FFFF"/>
-        <rect x="1" y="11" width="12" height="1" fill="#00FFFF"/>
-        <rect x="2" y="12" width="10" height="1" fill="#0080FF"/>
-        <rect x="4" y="13" width="6" height="1" fill="#0080FF"/>
-      </svg>
-      Internet
-    </div>
-  </div>
-</div>
-<script>
-document.title="\u2800";
-document.getElementById("close-btn").addEventListener("click",function(){
-window.location.href="OK_2_ddbbs.html";
-});
-document.getElementById("back-btn").addEventListener("click",function(){
-window.location.href="DDBBS.html";
-});
-document.getElementById("home-btn").addEventListener("click",function(){
-window.location.href="DDBBS.html";
-});
-document.getElementById("ie").addEventListener("click",function(){
-window.location.href="DDBBS.html";
-});
-</script>
-<script>
-document.addEventListener("keydown",function(e){
-if(e.key==="F12"){e.preventDefault();return;}
-if(e.ctrlKey||e.metaKey){
-var k=e.key.toLowerCase();
-if(k==="u"||k==="s"||(e.shiftKey&&(k==="i"||k==="j"||k==="c"))||(e.altKey&&(k==="i"||k==="j"||k==="c"))){e.preventDefault();}
-}
-});
-</script>
-</body>
+<div class="c25"><div class="c23 c26 c12"><img src="../image/u3.png" width="16" height="16" alt="">Done</div><div class="c23 c26" style="width:148px"></div><div class="c23 c26" style="width:22px"></div><div class="c23 c26" style="width:22px"></div><div class="c23 c26" style="width:22px"></div><div class="c23 c26" style="width:160px"><img src="../image/u4.png" width="16" height="16" alt="">Internet zone</div><i class="c21"></i></div></div>
+
+
+<script>document.title="⠀";document.getElementById("c5").addEventListener("click",function(){window.location.href=atob("T0tfMl9kZGJicy5odG1s")});document.getElementById("c3").addEventListener("click",function(){window.location.href=atob("RERCQlMuaHRtbA==")});document.getElementById("c7").addEventListener("click",function(){window.location.href=atob("RERCQlMuaHRtbA==")});document.getElementById("c9").addEventListener("click",function(){window.location.href=atob("RERCQlMuaHRtbA==")});document.addEventListener("keydown",function(e){if(e.key==="F12"){e.preventDefault();return}if(e.ctrlKey||e.metaKey){var t=e.key.toLowerCase();if(t==="u"||t==="s"||e.shiftKey&&(t==="i"||t==="j"||t==="c")||e.altKey&&(t==="i"||t==="j"||t==="c")){e.preventDefault()}}});</script></body>
 </html>
