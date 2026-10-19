@@ -1,12 +1,32 @@
 self.window=self;
-importScripts("mv_lib.js?v=DDBBS-MV-20261019-05");
-let w=1440,h=1080,p=null,l=null;
-const c=new Uint32Array(256);
-for(let i=0;i<256;i++){let n=i;for(let j=0;j<8;j++)n=n&1?3988292384^(n>>>1):n>>>1;c[i]=n>>>0}
-function crc(a){let n=4294967295;for(let i=0;i<a.length;i++)n=c[(n^a[i])&255]^(n>>>8);return(n^4294967295)>>>0}
-function box(a,n,r,g,b){let q=0,x0=255,x1=0,y0=255,y1=0,z0=255,z1=0;for(const i of a){q+=n[i];const x=r[i]/n[i],y=g[i]/n[i],z=b[i]/n[i];if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;if(z<z0)z0=z;if(z>z1)z1=z}const d=[x1-x0,y1-y0,z1-z0];return{a,q,k:d.indexOf(Math.max(...d)),v:Math.max(...d)}}
-function train(f){const n=new Uint32Array(32768),r=new Uint32Array(32768),g=new Uint32Array(32768),b=new Uint32Array(32768);for(const t of f){const a=new Uint8Array(t);for(let y=0;y<h;y+=2){let j=y*w*4;for(let x=0;x<w;x+=2){const k=j+x*4,i=(a[k]>>>3<<10)|(a[k+1]>>>3<<5)|(a[k+2]>>>3);n[i]++;r[i]+=a[k];g[i]+=a[k+1];b[i]+=a[k+2]}}}const a=[];for(let i=0;i<n.length;i++)if(n[i])a.push(i);let q=[box(a,n,r,g,b)];while(q.length<256){let m=-1,v=0;for(let i=0;i<q.length;i++){const z=q[i].v*Math.sqrt(q[i].q);if(q[i].a.length>1&&z>v){m=i;v=z}}if(m<0)break;const z=q.splice(m,1)[0],k=z.k,rr=r,gg=g,bb=b,nn=n;z.a.sort((i,j)=>k===0?rr[i]/nn[i]-rr[j]/nn[j]:k===1?gg[i]/nn[i]-gg[j]/nn[j]:bb[i]/nn[i]-bb[j]/nn[j]);let s=0,d=0;for(const i of z.a)d+=n[i];let c0=0;for(;c0<z.a.length-1;c0++){s+=n[z.a[c0]];if(s>=d/2){c0++;break}}if(c0<1)c0=1;if(c0>=z.a.length)c0=z.a.length-1;q.push(box(z.a.slice(0,c0),n,r,g,b),box(z.a.slice(c0),n,r,g,b))}p=new Uint8Array(q.length*3);for(let j=0;j<q.length;j++){let a0=0,b0=0,c0=0,d0=0;for(const i of q[j].a){a0+=r[i];b0+=g[i];c0+=b[i];d0+=n[i]}p[j*3]=Math.round(a0/d0);p[j*3+1]=Math.round(b0/d0);p[j*3+2]=Math.round(c0/d0)}return p}
-function table(){l=new Uint8Array(32768);const n=p.length/3;for(let i=0;i<32768;i++){const r=(i>>>10&31)*255/31,g=(i>>>5&31)*255/31,b=(i&31)*255/31;let m=1e20,k=0;for(let j=0;j<n;j++){const x=r-p[j*3],y=g-p[j*3+1],z=b-p[j*3+2],d=.299*x*x+.587*y*y+.114*z*z;if(d<m){m=d;k=j}}l[i]=k}}
-function chunk(t,d){const n=new Uint8Array(12+d.length),v=new DataView(n.buffer);v.setUint32(0,d.length,false);for(let i=0;i<4;i++)n[4+i]=t.charCodeAt(i);n.set(d,8);v.setUint32(8+d.length,crc(n.subarray(4,8+d.length)),false);return n}
-async function frame(t){const n=new Uint8Array(w*h),e=new Uint8Array(t),r=new Uint8Array((w+1)*h);for(let i=0,j=0;i<e.length;i+=4,j++)n[j]=l[(e[i]>>>3<<10)|(e[i+1]>>>3<<5)|(e[i+2]>>>3)];for(let i=0;i<h;i++)r.set(n.subarray(i*w,(i+1)*w),i*(w+1)+1);let z;if(typeof CompressionStream==="function"){const a=new CompressionStream("deflate"),b=new Response(a.readable).arrayBuffer(),c=a.writable.getWriter();await c.write(r);await c.close();z=new Uint8Array(await b)}else z=pako.deflate(r,{level:6});const s=new Uint8Array(8);s[0]=137;s.set([80,78,71,13,10,26,10],1);const u=new Uint8Array(13),v=new DataView(u.buffer);v.setUint32(0,w,false);v.setUint32(4,h,false);u[8]=8;u[9]=3;const x=[s,chunk("IHDR",u),chunk("PLTE",p),chunk("IDAT",z),chunk("IEND",new Uint8Array(0))],y=x.reduce((a,b)=>a+b.length,0),f=new Uint8Array(y);let g=0;for(const a of x){f.set(a,g);g+=a.length}return f}
-self.onmessage=async e=>{const t=e.data;try{if(t.t===0){w=t.w;h=t.h;p=train(t.f);table();const r=p.slice();self.postMessage({t:1,p:r.buffer,n:r.length/3},[r.buffer])}else if(t.t===2){w=t.w;h=t.h;p=new Uint8Array(t.p);table();self.postMessage({t:1,n:p.length/3})}else if(t.t===3){const n=await frame(t.b);self.postMessage({t:4,i:t.i,b:n.buffer},[n.buffer])}else if(t.t===6){const n=fflate.zipSync(t.f,{level:0});self.postMessage({t:7,b:n.buffer},[n.buffer])}}catch(n){self.postMessage({t:t.t===6?8:5,i:t.i,e:String(n&&n.message||n)})}};
+importScripts("mv_lib.js?v=DDBBS-MV-20261019-06");
+let width=1440,height=1080,canvas=null,ctx=null;
+async function encodePng(buffer){
+  if(!canvas)throw new Error("PNGエンコーダーが初期化されていません");
+  const bytes=buffer instanceof ArrayBuffer?new Uint8ClampedArray(buffer):new Uint8ClampedArray(buffer.buffer,buffer.byteOffset,buffer.byteLength);
+  const imageData=new ImageData(bytes,width,height);
+  ctx.putImageData(imageData,0,0);
+  const blob=await canvas.convertToBlob({type:"image/png"});
+  return new Uint8Array(await blob.arrayBuffer());
+}
+self.onmessage=async event=>{
+  const data=event.data;
+  try{
+    if(data.t===0){
+      width=data.w;height=data.h;
+      if(typeof OffscreenCanvas!=="function")throw new Error("OffscreenCanvas非対応です。PC版Chrome/Edgeをご利用ください。");
+      canvas=new OffscreenCanvas(width,height);
+      ctx=canvas.getContext("2d",{alpha:true,willReadFrequently:false});
+      if(!ctx)throw new Error("Canvasを初期化できません");
+      self.postMessage({t:1});
+    }else if(data.t===3){
+      const png=await encodePng(data.b);
+      self.postMessage({t:4,i:data.i,b:png.buffer},[png.buffer]);
+    }else if(data.t===6){
+      const zip=fflate.zipSync(data.f,{level:0});
+      self.postMessage({t:7,b:zip.buffer},[zip.buffer]);
+    }
+  }catch(error){
+    self.postMessage({t:data.t===6?8:5,i:data.i,e:String(error&&error.message||error)});
+  }
+};
