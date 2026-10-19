@@ -267,7 +267,8 @@
 .c34{font-family:u,'MS Sans Serif',Arial,sans-serif;}
 
 html,body{width:100%;height:100%;overflow:hidden}body{padding:0}
-.c60{--w:min(133.333333vh,calc(100vw - 236px));position:fixed;left:max(0px,min(calc((100vw - var(--w))/2),calc(100vw - var(--w) - 236px)));top:50%;width:var(--w);height:auto;aspect-ratio:4/3;transform:translateY(-50%);overflow:hidden;background:#008080;isolation:isolate;z-index:1}
+.c60{--w:min(133.333333vh,calc(100vw - 236px));position:fixed;left:max(0px,min(calc((100vw - var(--w))/2),calc(100vw - var(--w) - 236px)));top:50%;width:var(--w);height:auto;aspect-ratio:4/3;transform:translateY(-50%);overflow:hidden;background:#008080;isolation:isolate;z-index:1;image-rendering:pixelated}
+.c60 img,.c60 canvas{image-rendering:pixelated}
 .c60>.c12{position:absolute;left:50%;top:50%;margin:0;transform:translate(-50%,-50%) scale(var(--k,1));transform-origin:center}
 .c61{position:fixed;z-index:1000;top:50%;right:8px;transform:translateY(-50%);width:220px;padding:8px;background:#c0c0c0;color:#000;border:1px solid #fff;box-shadow:inset -1px -1px #808080,3px 3px 0 #0008;font-family:u,'MS Sans Serif',Arial,sans-serif;font-size:11px;line-height:14px}
 .c71{font-weight:bold;background:#000080;color:#fff;padding:3px 5px;margin:-4px -4px 7px}
@@ -298,10 +299,10 @@ html,body{width:100%;height:100%;overflow:hidden}body{padding:0}
 <div class="c9"><div class="c40 c30 c38"><img src="../image/u3.png" width="16" height="16" alt="">Done</div><div class="c40 c30" style="width:148px"></div><div class="c40 c30" style="width:22px"></div><div class="c40 c30" style="width:22px"></div><div class="c40 c30" style="width:22px"></div><div class="c40 c30" style="width:160px"><img src="../image/u4.png" width="16" height="16" alt="">Internet zone</div><i class="c49"></i></div></div></div>
 <div class="c61" id="c61">
 <div class="c71">MV CAPTURE · 4:3</div>
-<div class="c72"><label for="c62">スクロール速度</label><output id="c63">36 px/s</output></div>
-<input id="c62" type="range" min="1" max="180" step="1" value="36">
+<div class="c72"><label for="c62">1コマのスクロール量</label><output id="c63">12 px/コマ</output></div>
+<input id="c62" type="range" min="1" max="100" step="1" value="12">
 <div class="c73"><button id="c64" type="button">録画開始</button><button id="c65" type="button" disabled>停止してZIP保存</button></div>
-<div class="c74" id="c66">1440×1080 · 30fps<br>映像は中央4:3範囲</div>
+<div class="c74" id="c66">書き出し30fps固定 · 1440×1080<br>1コマごとに指定px移動</div>
 <div class="c74" id="c67">停止: ボタン・Esc・Chromeの共有停止</div>
 </div>
 <video id="c68" playsinline muted></video><canvas id="c69"></canvas>
