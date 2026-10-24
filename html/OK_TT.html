@@ -33,8 +33,15 @@ max-height:45vh;
 margin-top:20px;
 display: block;
 }
+iframe {
+max-width:90%;
+width: 560px;
+height: 315px;
+margin-top:20px;
+display: block;
+}
 .t {
-font-size: 1.5rem;
+font-size: 24px;
 color: #ffffff;
 text-align: center;
 margin-top: 20px;
@@ -44,25 +51,81 @@ line-height: 1.8;
 margin: 0.3em 0;
 }
 .c {
-position: absolute;
-top:85vh;
+position: static;
+margin-top: auto; padding-top: 28px;
 display: flex;
 flex-direction: column;
 align-items: center;
 gap:10px;
 }
 </style>
+<style>
+.c{position:static;top:auto;left:auto;right:auto;bottom:auto;transform:none;margin-top:auto;padding-top:28px;}
+.rt-audio{display:flex;flex-direction:row;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:6px 10px;height:40px;margin:12px 0;max-width:90%;}
+.rt-audio audio{display:none;}
+.rt-audio .b{width:28px;height:28px;border-radius:50%;background:#333;border:1px solid #555;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s;}
+.rt-audio .b:hover{background:#444;border-color:rgb(50, 117, 198);}
+.rt-audio .b svg{width:12px;height:12px;fill:#ccc;}
+.rt-audio .b:hover svg{fill:rgb(50, 117, 198);}
+.rt-audio .b .h{display:none;}
+.rt-audio .b.v .e{display:none;}
+.rt-audio .b.v .h{display:block;}
+.rt-audio .w{width:18px;height:18px;flex-shrink:0;opacity:0.6;}
+.rt-audio .w svg{width:100%;height:100%;fill:#ccc;}
+.rt-audio .f{-webkit-appearance:none;appearance:none;width:36px;height:4px;background:#444;border-radius:2px;outline:none;cursor:pointer;flex-shrink:0;}
+.rt-audio .f::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:12px;height:12px;border-radius:50%;background:#ccc;cursor:pointer;border:none;}
+.rt-audio .f::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#ccc;cursor:pointer;border:none;}
+.rt-audio .f:hover::-webkit-slider-thumb{background:rgb(50, 117, 198);}
+.rt-audio .f:hover::-moz-range-thumb{background:rgb(50, 117, 198);}
+.rt-audio .sk{width:170px;flex:1 1 auto;min-width:90px;background:#2a2a2a;}
+.rt-audio .sk:disabled{opacity:0.35;cursor:default;}
+.rt-video{width:90%;max-width:640px;margin:16px auto;}
+.rt-row{box-sizing:border-box;}
+.rt-row > img, .rt-row > video{margin:0;height:auto;max-width:100%;}
+.rt-row[data-cols] > img, .rt-row[data-cols] > video{flex:0 1 0;min-width:0;width:auto;max-height:45vh;object-fit:contain;}
+.rt-vid{display:block;background:#000;}
+.rt-row[data-cols="2"] > img, .rt-row[data-cols="2"] > video{flex-basis:calc((100% - 1*var(--rt-row-gap,10px))/2);}
+.rt-row[data-cols="3"] > img, .rt-row[data-cols="3"] > video{flex-basis:calc((100% - 2*var(--rt-row-gap,10px))/3);}
+.rt-row[data-cols="4"] > img, .rt-row[data-cols="4"] > video{flex-basis:calc((100% - 3*var(--rt-row-gap,10px))/4);}
+.rt-row[data-cols="5"] > img, .rt-row[data-cols="5"] > video{flex-basis:calc((100% - 4*var(--rt-row-gap,10px))/5);}
+.rt-row[data-cols="6"] > img, .rt-row[data-cols="6"] > video{flex-basis:calc((100% - 5*var(--rt-row-gap,10px))/6);}
+.rt-row[data-nowrap="1"]{flex-wrap:nowrap;}
+.rt-video iframe{width:100%;max-width:none;height:auto;margin:0;aspect-ratio:16/9;border:var(--rt-video-border,1px solid #333);border-radius:4px;display:block;background:#111;}
+.rt-link{color:#9ecbff;font-size:24px;text-decoration:underline;line-height:1.4;cursor:pointer;display:inline-block;margin:12px 0;}
+.rt-link:visited{color:#9ecbff;}
+.rt-link:hover{opacity:0.8;}
+a.rt-tlink{color:#9ecbff;text-decoration:underline;cursor:pointer;}
+a.rt-tlink:visited{color:#9ecbff;}
+a.rt-tlink:hover{opacity:0.8;}
+@media screen and (max-width:600px){.rt-audio .f{width:30px;}.rt-audio .sk{min-width:70px;}}
+@media screen and (max-width:600px){
+.rt-img{max-width:100%;}
+.rt-row:not([data-sm-same]){width:100% !important;}
+.rt-row[data-cols="3"] > img,.rt-row[data-cols="4"] > img,.rt-row[data-cols="5"] > img,.rt-row[data-cols="6"] > img,.rt-row[data-cols="3"] > video,.rt-row[data-cols="4"] > video,.rt-row[data-cols="5"] > video,.rt-row[data-cols="6"] > video{flex-basis:calc((100% - var(--rt-row-gap,10px))/2);}
+}
+</style>
 </head>
 <body>
-<img src="../image/OK.png" alt="">
+<img src="../image/OK_TT.png" alt="">
 <div class="t">
-<p>TT</p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
-<p> </p>
+<p style="font-size:40px;margin-bottom:-15px">Tr.08 saaa feat. ナースロボ＿タイプT - Rent a Tale</p>
 </div>
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.5">制作期間：2026/09/14 ～ 2026/10/07<br>Genre: Drum &amp; Bass　BPM:174<br><br></p>
+<img class="rt-img" src="../image/TT_p1.png" alt="" style="height:auto;height:auto;width:400px;height:auto;max-height:none">
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.2">先日VOCALOID6を購入し、TTちゃんをお迎えしていました<br>TTちゃんだと！　よろしくね<br></p>
+<p style="margin:0.3em 0;font-size:15px;text-align:center;line-height:1.2">買って1ヶ月もしないうちにVOCALOID7が発表されました涙</p>
+<div class="rt-video"><iframe src="https://www.youtube.com/embed/eIL3jXzlj9k?si=NFnpFcAkvh3G5vQN" title="YouTube動画" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe></div>
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.2">Virtual RiotのSerum2プリセットが大いに活躍しました<br>やわらかくてやさしいsynth、padがうれしい<br>あとGENプリセット面白ッ</p>
+<div class="rt-video"><iframe src="https://www.youtube.com/embed/PxtpT02yLxo?si=Zc8ocdx1d__C3N1V" title="YouTube動画" allowfullscreen loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe></div>
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.2">Native InstrumentsのPlayboxも今回重宝しました<br>Komplete Standard以上に入ってるやつです<br>音源揃ってないけどボタニカっぽいのやりたい人たちの味方……<br></p>
+<img class="rt-img" src="../image/TT_p3.png" alt="" style="height:auto;width:500px;height:auto;max-height:none">
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.2">XFDの冒頭でも流れてる、Granularっぽい音は<br>Playboxで音色ランダマイズしながら録音した音源を逆再生して、<br>サンプラーでランダムな位置で再生させたものです</p>
+<video class="rt-img rt-vid" src="../image/TT_p4.mp4" controls preload="metadata" playsinline style="height:auto;width:500px;height:auto;max-height:none"></video>
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.2">直後の単音だけ鳴ってる部分もPlayboxです<br>midiで鳴らす音を指定できるため、疑似カットアップみたいなことが簡単にできます<br><br></p>
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.2">今回やけに<a class="rt-tlink" href="https://x.com/saaa_otoge/status/2107609558193738125" target="_blank" rel="noopener noreferrer">作詞がスムーズに行けた！！</a>（平均所要日数：2週間～1ヶ月）<br>ストーリーも軽いものではない上、いろんなものと辻褄合わせなきゃいけないのにもかかわらず…………<br><br>表題曲なのでだいぶ気合入れさせていただきました　どうぞよろしく</p>
+<img class="rt-img" src="../image/TT_p2.gif" alt="">
+<p style="margin:0.3em 0;font-size:24px;text-align:center;line-height:1.2">XFD素材作成の様子</p>
+<p style="margin:0.3em 0;font-size:15px;text-align:center;line-height:1.2;margin-top:-3px">（撮影に使用したノート等は持ち帰っています）</p>
 <div class="c">
 <img src="../image/return.png" alt="" id="r" style="cursor:pointer;">
 </div>

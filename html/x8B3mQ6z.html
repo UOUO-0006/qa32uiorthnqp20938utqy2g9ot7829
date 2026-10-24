@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>&#10240;</title>
+<style>
+@font-face {
+font-family:'MaruMonica';
+src:url('../x12y16pxMaruMonica.ttf') format('truetype');
+}
+* {
+font-family:'MaruMonica', sans-serif;
+}
+body {
+background-color:#000000;
+color:#ffffff;
+margin:0;
+padding:20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+min-height:100vh;
+box-sizing: border-box;
+position: relative;
+}
+img {
+max-width:90%;
+height: auto;
+max-height:45vh;
+margin-top:20px;
+display: block;
+}
+.t {
+font-size: 24px;
+color: #ffffff;
+text-align: center;
+margin-top: 20px;
+line-height: 1.8;
+}
+.t p {
+margin: 0.3em 0;
+}
+.c {
+position: static;
+margin-top: auto; padding-top: 28px;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap:10px;
+}
+</style>
+<style>
+.c{position:static;top:auto;left:auto;right:auto;bottom:auto;transform:none;margin-top:auto;padding-top:28px;}
+.rt-audio{display:flex;flex-direction:row;align-items:center;gap:6px;background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:6px 10px;height:40px;margin:12px 0;max-width:90%;}
+.rt-audio audio{display:none;}
+.rt-audio .b{width:28px;height:28px;border-radius:50%;background:#333;border:1px solid #555;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s;}
+.rt-audio .b:hover{background:#444;border-color:rgb(50, 117, 198);}
+.rt-audio .b svg{width:12px;height:12px;fill:#ccc;}
+.rt-audio .b:hover svg{fill:rgb(50, 117, 198);}
+.rt-audio .b .h{display:none;}
+.rt-audio .b.v .e{display:none;}
+.rt-audio .b.v .h{display:block;}
+.rt-audio .w{width:18px;height:18px;flex-shrink:0;opacity:0.6;}
+.rt-audio .w svg{width:100%;height:100%;fill:#ccc;}
+.rt-audio .f{-webkit-appearance:none;appearance:none;width:36px;height:4px;background:#444;border-radius:2px;outline:none;cursor:pointer;flex-shrink:0;}
+.rt-audio .f::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:12px;height:12px;border-radius:50%;background:#ccc;cursor:pointer;border:none;}
+.rt-audio .f::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:#ccc;cursor:pointer;border:none;}
+.rt-audio .f:hover::-webkit-slider-thumb{background:rgb(50, 117, 198);}
+.rt-audio .f:hover::-moz-range-thumb{background:rgb(50, 117, 198);}
+.rt-audio .sk{width:170px;flex:1 1 auto;min-width:90px;background:#2a2a2a;}
+.rt-audio .sk:disabled{opacity:0.35;cursor:default;}
+.rt-video{width:90%;max-width:640px;margin:16px auto;}
+.rt-row{box-sizing:border-box;}
+.rt-row > img, .rt-row > video{margin:0;height:auto;max-width:100%;}
+.rt-row[data-cols] > img, .rt-row[data-cols] > video{flex:0 1 0;min-width:0;width:auto;max-height:45vh;object-fit:contain;}
+.rt-vid{display:block;background:#000;}
+.rt-row[data-cols="2"] > img, .rt-row[data-cols="2"] > video{flex-basis:calc((100% - 1*var(--rt-row-gap,10px))/2);}
+.rt-row[data-cols="3"] > img, .rt-row[data-cols="3"] > video{flex-basis:calc((100% - 2*var(--rt-row-gap,10px))/3);}
+.rt-row[data-cols="4"] > img, .rt-row[data-cols="4"] > video{flex-basis:calc((100% - 3*var(--rt-row-gap,10px))/4);}
+.rt-row[data-cols="5"] > img, .rt-row[data-cols="5"] > video{flex-basis:calc((100% - 4*var(--rt-row-gap,10px))/5);}
+.rt-row[data-cols="6"] > img, .rt-row[data-cols="6"] > video{flex-basis:calc((100% - 5*var(--rt-row-gap,10px))/6);}
+.rt-row[data-nowrap="1"]{flex-wrap:nowrap;}
+.rt-video iframe{width:100%;max-width:none;height:auto;margin:0;aspect-ratio:16/9;border:var(--rt-video-border,1px solid #333);border-radius:4px;display:block;background:#111;}
+.rt-link{color:#9ecbff;font-size:24px;text-decoration:underline;line-height:1.4;cursor:pointer;display:inline-block;margin:12px 0;}
+.rt-link:visited{color:#9ecbff;}
+.rt-link:hover{opacity:0.8;}
+a.rt-tlink{color:#9ecbff;text-decoration:underline;cursor:pointer;}
+a.rt-tlink:visited{color:#9ecbff;}
+a.rt-tlink:hover{opacity:0.8;}
+@media screen and (max-width:600px){.rt-audio .f{width:30px;}.rt-audio .sk{min-width:70px;}}
+@media screen and (max-width:600px){
+.rt-img{max-width:100%;}
+.rt-row:not([data-sm-same]){width:100% !important;}
+.rt-row[data-cols="3"] > img,.rt-row[data-cols="4"] > img,.rt-row[data-cols="5"] > img,.rt-row[data-cols="6"] > img,.rt-row[data-cols="3"] > video,.rt-row[data-cols="4"] > video,.rt-row[data-cols="5"] > video,.rt-row[data-cols="6"] > video{flex-basis:calc((100% - var(--rt-row-gap,10px))/2);}
+}
+</style>
+</head>
+<body>
+<img src="../image/OK.png" alt="">
+<div class="t">
+<p>QR後のページ</p>
+<p>　</p>
+<p>　</p>
+<p>　</p>
+<p>　</p>
+<p>　</p>
+</div>
+<div class="c">
+<img src="../image/return.png" alt="" id="r" style="cursor:pointer;">
+</div>
+<script>
+document.title="\u2800";
+var p="bWFpbjIuaHRtbA==";
+document.getElementById("r").addEventListener("click",function(){
+window.location.href=atob(p);
+});
+</script>
+<script>
+document.addEventListener("keydown",function(e){
+if(e.key==="F12"){e.preventDefault();return;}
+if(e.ctrlKey||e.metaKey){
+var k=e.key.toLowerCase();
+if(k==="u"||k==="s"||(e.shiftKey&&(k==="i"||k==="j"||k==="c"))||(e.altKey&&(k==="i"||k==="j"||k==="c"))){e.preventDefault();}
+}
+});
+</script>
+</body>
+</html>
